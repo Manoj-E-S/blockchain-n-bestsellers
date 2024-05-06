@@ -1,0 +1,7 @@
+Commit [Manoj E S][Tue May 7 00:52:22 2024 +0530] : [Implement ipynbs for training and prediction - iteration1]
+- A basic embedding implementation of the MatrixFactorisation approach to Rating Prediction system (Book recommender - primitive) is done
+- Fixes required:
+  - Works only if user and book embeddings have same size [Make variable user, book data sizes acceptable]
+  - Add more NN Layers to improve accuracy - accuracy is not impressive rn.
+- Enhancements:
+  - Incorporate book-matadata and user-metadata in the model.
