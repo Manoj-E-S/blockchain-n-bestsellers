@@ -1,0 +1,16 @@
+name: ML_GPU
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterlab
+  - jupyter
+  - matplotlib
+  - numpy
+  - ipykernel
+  - pip
+  - python=3.9.*
+  - seaborn
+  - statsmodels
+  - pip:
+    - -r requirements4pip.txt

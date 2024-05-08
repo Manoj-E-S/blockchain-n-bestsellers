@@ -1,0 +1,18 @@
+1. Create a conda environment with specified requirements:
+    - conda env create -f requirements.yml
+
+2. List conda envs:
+    - conda env list
+
+3. Activate and deactivate conda env
+    - conda activate <ENV_NAME>
+    - conda deactivate
+
+4. Remove a conda environment and its packages
+    - conda remove --name <ENV_NAME> --all
+
+4. Create a requiremets.yml file using conda (based on its install history)
+    - conda env export --from-history -f requirements.yml
+
+5. Create a requirements4pip.txt file using pipreqs (based on pip packages used in the project)
+    - pipreqs [--force] ./
