@@ -16,19 +16,19 @@
 2. Follow standard installation procedure
 
 # Initial virtual-environment and Notebook server setup
-1. `conda env create -f requirements.yml` - Creates a new environment installing the dependencies from the .yml file
-2. `conda env list` - Should list all environments
-3. `conda activate <ENV_NAME>` - Activates the said environment
-4. `python -m ipykernel install --user --name=<ENV_NAME>` - (OPTIONAL) enables to open directories using the `jupyter-notebook` or `jupyter-lab` server.
+1. `conda env create -f requirements.yml --prefix /path/to/venv` - Creates a new environment installing the dependencies from the .yml file
+2. `conda env list` - Should list all environments - some with names, some with only path
+3. `conda activate /path/to/venv` - Activates the said environment
+4. `python -m ipykernel install --user [--name=<ENV_NAME>] [--prefix=/path/to/venv]` - (OPTIONAL) enables to open directories using the `jupyter-notebook` or `jupyter-lab` server.
 
 # Using the virtual environment:
 1. `conda env list` - Lists available environments
-2. `conda activate <ENV_NAME>` - Activates the environment env_name
+2. `conda activate /path/to/venv` - Activates the environment env_name
 3. Run project related commands.
 4. `conda deactivate` - Deactivates the environment
 
 # Dependency installation
-1. Requirements are installed while creating the environment `conda env create -f requirements.yml`
+1. Requirements are installed while creating the environment `conda env create -f requirements.yml --prefix ./venv`
 2. If not so, they can be installed _**after activating the environment**_, using `pip install -r requirements4pip.txt`
 
 # Run the flask app
