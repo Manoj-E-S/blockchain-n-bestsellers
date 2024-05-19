@@ -7,22 +7,6 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 import joblib
 
-class BooksDataset(Dataset):
-    def __init__(self, users, ratings, books):
-        self.users = users
-        self.ratings = ratings
-        self.books = books
-
-    def __len__(self):
-        return len(self.users)
-
-    def __getitem__(self, idx):
-        return {
-            'users': torch.tensor(self.users[idx], dtype=torch.long),
-            'ratings': torch.tensor(self.ratings[idx], dtype=torch.float32),
-            'books': torch.tensor(self.books[idx], dtype=torch.long)
-        }
-
 
 class CudaUtils:
     @staticmethod
@@ -44,16 +28,16 @@ class DataLoaderUtils:
             ratings_df, test_size=0.2, random_state=42, stratify=ratings_df["rating"].values
             )
 
-        train_ds = BooksDataset(
+        train_ds = RatingsDataset(
             users=train["user_id"].values,
             books=train["isbn"].values,
-            ratings=train["rating"].values
+            ratings=train["rating"].values,
             )
 
-        test_ds = BooksDataset(
+        test_ds = RatingsDataset(
             users=test["user_id"].values,
             books=test["isbn"].values,
-            ratings=test["rating"].values
+            ratings=test["rating"].values,
             )
         
         train_dl = DataLoader(train_ds, batch_size=DataLoaderUtils.batch_size, shuffle=True, num_workers=2)
@@ -100,7 +84,24 @@ class EncoderUtils:
             isbn_encoder = preprocessing.LabelEncoder()
             
         return userid_encoder, isbn_encoder
-    
+
+
+class RatingsDataset(Dataset):
+    def __init__(self, users, ratings, books):
+        self.users = users
+        self.ratings = ratings
+        self.books = books
+
+    def __len__(self):
+        return len(self.users)
+
+    def __getitem__(self, idx):
+        return {
+            'users': torch.tensor(self.users[idx], dtype=torch.long),
+            'ratings': torch.tensor(self.ratings[idx], dtype=torch.float32),
+            'books': torch.tensor(self.books[idx], dtype=torch.long)
+        }
+
 
 class RatingsPredictor(nn.Module):
     def __init__(self, n_books, n_users):

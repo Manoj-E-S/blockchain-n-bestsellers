@@ -1,14 +1,13 @@
 import torch
 import torch.nn.functional as F
+import numpy as np
 
 from utils import (
     CudaUtils, EncoderUtils, RatingsPredictor
 )
 
 class Predictor:
-    def __init__(self, mod_path):
-        device = CudaUtils.get_device()
-
+    def __init__(self, mod_path, device):
         self.userid_encoder, self.isbn_encoder = EncoderUtils.load_encoders()
         
         mod_n_books = len(self.isbn_encoder.classes_)
@@ -40,25 +39,25 @@ class Predictor:
         return predictions
     
 
-    def recommend_CF(self, user_id, top_n=10):
+    def recommend_CF(self, user_id, device, top_n=10):
         if user_id not in self.userid_encoder.classes_:
             user_index = self.average_reader_idx
         else:
             user_index = self.userid_encoder.transform([user_id])[0]
     
-        user_tensor = torch.tensor([user_index] * len(self.isbn_encoder.classes_), dtype=torch.long)
-        book_tensor = torch.arange(len(self.isbn_encoder.classes_), dtype=torch.long)
+        user_tensor = torch.tensor([user_index] * len(self.isbn_encoder.classes_), dtype=torch.long).to(device)
+        book_tensor = torch.arange(len(self.isbn_encoder.classes_), dtype=torch.long).to(device)
         
         predictions = self.predict(user_tensor, book_tensor)
         
         top_n_books = predictions.view(-1).argsort(descending=True)[:top_n]
-        recommended_books = self.isbn_encoder.inverse_transform(top_n_books.numpy())
+        recommended_books = self.isbn_encoder.inverse_transform(top_n_books.to(torch.device('cpu')).numpy())
         
         return recommended_books
     
 
 
 if __name__ == "__main__":
-
-    predictor = Predictor("./models/matfac_model.pth")
-    print(predictor.recommend_CF("276737", top_n=10))
+    device = CudaUtils.get_device()
+    predictor = Predictor("./models/matfac_model.pth", device)
+    print(predictor.recommend_CF("276737", device, top_n=10))

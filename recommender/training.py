@@ -13,8 +13,7 @@ from utils import (
 )
 
 class Trainer:
-    def __init__(self, opt_lr, sch_gamma, sch_step_size, n_folds, n_batches=None):
-        device = CudaUtils.get_device()
+    def __init__(self, opt_lr, sch_gamma, sch_step_size, n_folds, device, n_batches=None):
         userid_encoder, isbn_encoder = EncoderUtils.load_encoders()
         
         self.mod_n_books = len(isbn_encoder.classes_)
@@ -34,12 +33,14 @@ class Trainer:
 
     def print_train_stats(self, train_fold_losses, val_fold_losses):
 
+        print()
         avg_val_losses = np.mean(val_fold_losses, axis=0)
         print("Average Validation Losses:", avg_val_losses)
 
         avg_train_losses = np.mean(train_fold_losses, axis=0)
         print("Average Validation Losses:", avg_train_losses)
 
+        print()
         print("Train Losses (fold: [epochs])")
         for i, x in enumerate(train_fold_losses):
             print(f"{i+1}: {x}")
@@ -77,13 +78,13 @@ class Trainer:
         torch.save(self.model.state_dict(), pth_path)
 
 
-    def train_all_batches(self, train_dl):
+    def train_all_batches(self, train_dl, device):
         train_loss = 0
         self.model.train()
         for batch in train_dl:
-            users = batch['users']
-            books = batch['books']
-            ratings = batch['ratings'].view(-1, 1)
+            users = batch['users'].to(device)
+            books = batch['books'].to(device)
+            ratings = batch['ratings'].view(-1, 1).to(device)
 
             self.optimizer.zero_grad()
             outputs = self.model(users, books)
@@ -99,14 +100,14 @@ class Trainer:
         return (train_loss / len(train_dl))
     
 
-    def validate_all_batches(self, val_dl):
+    def validate_all_batches(self, val_dl, device):
         val_loss = 0
         self.model.eval()
         with torch.no_grad():
             for batch in val_dl:
-                users = batch['users']
-                books = batch['books']
-                ratings = batch['ratings'].view(-1, 1)
+                users = batch['users'].to(device)
+                books = batch['books'].to(device)
+                ratings = batch['ratings'].view(-1, 1).to(device)
 
                 outputs = self.model(users, books)
                 val_loss += self.loss_fn(outputs, ratings).item()
@@ -114,7 +115,7 @@ class Trainer:
         return (val_loss / len(val_dl))
 
 
-    def initial_train(self, epochs, train_ds):
+    def initial_train(self, epochs, train_ds, device):
         val_fold_losses = []
         train_fold_losses = []
 
@@ -134,12 +135,12 @@ class Trainer:
                 print(f"  Epoch {epoch + 1}")
 
                 # Training
-                train_loss_ratio = self.train_all_batches(train_dl)
+                train_loss_ratio = self.train_all_batches(train_dl, device)
                 train_fold_loss.append(train_loss_ratio)
                 print(f"    Train Loss: {train_loss_ratio}")
 
                 # Validation
-                val_loss_ratio = self.validate_all_batches(val_dl)
+                val_loss_ratio = self.validate_all_batches(val_dl, device)
                 val_fold_loss.append(val_loss_ratio)
                 print(f"    Validation Loss: {val_loss_ratio}")
 
@@ -150,7 +151,7 @@ class Trainer:
         return (train_fold_losses, val_fold_losses)
     
     
-    def test_all_batches(self, test_dl, debug_flag=False):
+    def test_all_batches(self, test_dl, device, debug_flag=False):
         error_counts = []
         error_ratios = []
         error_count = 0
@@ -158,9 +159,9 @@ class Trainer:
         self.model.eval()
         with torch.no_grad():
             for i, batch in enumerate(test_dl):
-                users = batch['users']
-                books = batch['books']
-                ratings = batch['ratings'].view(-1, 1)
+                users = batch['users'].to(device)
+                books = batch['books'].to(device)
+                ratings = batch['ratings'].view(-1, 1).to(device)
 
                 output = self.model(users, books)
 
@@ -182,16 +183,19 @@ class Trainer:
     
 
     def retrain_model(self, epochs):
-        pass
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
+    device = CudaUtils.get_device()
     model_trainer = Trainer(
             opt_lr=0.001,
             sch_gamma=0.9,
             sch_step_size=1,
+            device=device,
             n_folds=3
         )
+    
     
     ratings_df = DfUtils.get_ratings_df("./main_dataset/updated_ratings.csv")
     split_ds_dl = DataLoaderUtils.get_train_test(ratings_df)
@@ -199,11 +203,11 @@ if __name__ == "__main__":
     test_dl = split_ds_dl["dataloders"][1]
 
     # Training and Validation (on train_ds)
-    train_fold_losses, val_fold_losses = model_trainer.initial_train(epochs=2, train_ds=train_ds)
+    train_fold_losses, val_fold_losses = model_trainer.initial_train(epochs=2, train_ds=train_ds, device=device)
     model_trainer.print_train_stats(train_fold_losses, val_fold_losses)
 
     # Testing (on test_dl)
-    error_counts, error_ratios = model_trainer.test_all_batches(test_dl)
+    error_counts, error_ratios = model_trainer.test_all_batches(test_dl, device)
     model_trainer.print_test_stats(error_counts, error_ratios)
 
     model_trainer.save_model("./models/matfac_model.pth")
