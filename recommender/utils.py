@@ -34,6 +34,7 @@ class CudaUtils:
 
 
 class DataLoaderUtils:
+    batch_size = 50
     def __init__(batch_size=50):
         DataLoaderUtils.batch_size = batch_size
 
@@ -113,7 +114,7 @@ class RatingsPredictor(nn.Module):
         user_embed = self.user_embed(users)
         book_embed = self.book_embed(books)
         output = torch.cat([user_embed, book_embed], dim=1) 
-        output = self.out(output)
+        output = torch.sigmoid(self.out(output)) * 5
 
         return output
     

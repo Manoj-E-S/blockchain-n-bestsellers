@@ -8,28 +8,31 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_theme()
 
-from recommender.utils import (
-    CudaUtils, DataLoaderUtils, DfUtils, RatingsPredictor
+from utils import (
+    CudaUtils, DataLoaderUtils, DfUtils, EncoderUtils, RatingsPredictor
 )
 
 class Trainer:
-    def __init__(self, opt_lr, sch_gamma, sch_step_size, n_folds, rdf_path):
-        self.device = CudaUtils.get_device()
-
-        self.ratings_df = DfUtils.get_ratings_df(rdf_path)
+    def __init__(self, opt_lr, sch_gamma, sch_step_size, n_folds, n_batches=None):
+        device = CudaUtils.get_device()
+        userid_encoder, isbn_encoder = EncoderUtils.load_encoders()
         
-        self.mod_n_users = len(self.ratings_df["user_id"].unique())
-        self.mod_n_books = len(self.ratings_df["isbn"].unique())
-        self.model = RatingsPredictor(self.mod_n_books, self.mod_n_users).to(self.device)
-
+        self.mod_n_books = len(isbn_encoder.classes_)
+        self.mod_n_users = len(userid_encoder.classes_)
+        self.batch_size = DataLoaderUtils.batch_size if not n_batches else n_batches
+        
+        self.model = RatingsPredictor(
+                n_books=self.mod_n_books,
+                n_users=self.mod_n_users
+            ).to(device)
+        
         self.loss_fn = nn.MSELoss()
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=opt_lr)
         self.scheduler = torch.optim.lr_scheduler.StepLR(self.optimizer, sch_step_size, gamma=sch_gamma)
         self.kf = model_selection.KFold(n_splits=n_folds, shuffle=True)
 
 
-    @staticmethod
-    def print_stats(train_fold_losses, val_fold_losses):
+    def print_train_stats(self, train_fold_losses, val_fold_losses):
 
         avg_val_losses = np.mean(val_fold_losses, axis=0)
         print("Average Validation Losses:", avg_val_losses)
@@ -48,6 +51,25 @@ class Trainer:
         plt.plot(train_fold_losses)
         plt.show()
         plt.plot(val_fold_losses)
+        plt.show()
+
+
+    def print_test_stats(self, error_counts, error_ratios):
+        print()
+        print(f"Total Number of batches: {len(error_ratios)}")
+        print(f"Minimum Errors per batch: {min(error_counts)}")
+        print(f"Maximum Errors per batch: {max(error_counts)}")
+        print(f"Average Errors ratio: {sum(error_counts)/(self.batch_size*len(error_counts))}")
+        print()
+
+        plt.plot(error_ratios)
+        plt.xlabel("Batch No.")
+        plt.ylabel("Error Ratio")
+        plt.show()
+
+        plt.hist(error_ratios, bins=50)
+        plt.xlabel("Error Ratio")
+        plt.ylabel("Occurance Frequency")
         plt.show()
 
     
@@ -92,8 +114,7 @@ class Trainer:
         return (val_loss / len(val_dl))
 
 
-    def initial_train(self, epochs):
-        train_ds = DataLoaderUtils.get_train_test(self.ratings_df)["datasets"][0]
+    def initial_train(self, epochs, train_ds):
         val_fold_losses = []
         train_fold_losses = []
 
@@ -103,8 +124,8 @@ class Trainer:
             train_fold = Subset(train_ds, train_idxs)
             val_fold = Subset(train_ds, val_idxs)
 
-            train_dl = DataLoader(train_fold, batch_size=DataLoaderUtils.batch_size, shuffle=True)
-            val_dl = DataLoader(val_fold, batch_size=DataLoaderUtils.batch_size, shuffle=False)
+            train_dl = DataLoader(train_fold, batch_size=self.batch_size, shuffle=True)
+            val_dl = DataLoader(val_fold, batch_size=self.batch_size, shuffle=False)
 
             train_fold_loss = []
             val_fold_loss = []
@@ -125,8 +146,64 @@ class Trainer:
             train_fold_losses.append(train_fold_loss)
             val_fold_losses.append(val_fold_loss)
 
-        Trainer.print_stats(train_fold_losses, val_fold_losses)
+        # Use the return values to print stats if needed
+        return (train_fold_losses, val_fold_losses)
+    
+    
+    def test_all_batches(self, test_dl, debug_flag=False):
+        error_counts = []
+        error_ratios = []
+        error_count = 0
+
+        self.model.eval()
+        with torch.no_grad():
+            for i, batch in enumerate(test_dl):
+                users = batch['users']
+                books = batch['books']
+                ratings = batch['ratings'].view(-1, 1)
+
+                output = self.model(users, books)
+
+                for j, (o, r) in enumerate(zip(output, ratings)):
+                    if abs(o - r) > 0.7:
+                        print(f"{i, j} : {abs(o - r).item()}") if debug_flag else None
+                        error_count += 1
+
+                print() if debug_flag else None
+
+                error_counts.append(error_count)
+
+                erred_ratio = error_count/len(users)
+                error_ratios.append(erred_ratio)
+
+                error_count = 0
+        
+        return (error_counts, error_ratios)
     
 
-    def retrain_model(seld, epochs):
+    def retrain_model(self, epochs):
         pass
+
+
+if __name__ == "__main__":
+    model_trainer = Trainer(
+            opt_lr=0.001,
+            sch_gamma=0.9,
+            sch_step_size=1,
+            n_folds=3
+        )
+    
+    ratings_df = DfUtils.get_ratings_df("./main_dataset/updated_ratings.csv")
+    split_ds_dl = DataLoaderUtils.get_train_test(ratings_df)
+    train_ds = split_ds_dl["datasets"][0]
+    test_dl = split_ds_dl["dataloders"][1]
+
+    # Training and Validation (on train_ds)
+    train_fold_losses, val_fold_losses = model_trainer.initial_train(epochs=2, train_ds=train_ds)
+    model_trainer.print_train_stats(train_fold_losses, val_fold_losses)
+
+    # Testing (on test_dl)
+    error_counts, error_ratios = model_trainer.test_all_batches(test_dl)
+    model_trainer.print_test_stats(error_counts, error_ratios)
+
+    model_trainer.save_model("./models/matfac_model.pth")
