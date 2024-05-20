@@ -3,7 +3,7 @@ import torch.nn.functional as F
 import numpy as np
 
 from utils import (
-    CudaUtils, EncoderUtils, RatingsPredictor
+    CudaUtils, EncoderUtils, RatingsPredictorGMF, RatingsPredictorMLP
 )
 
 class Predictor:
@@ -13,7 +13,7 @@ class Predictor:
         mod_n_books = len(self.isbn_encoder.classes_)
         mod_n_users = len(self.userid_encoder.classes_)
 
-        self.model = RatingsPredictor(
+        self.model = RatingsPredictorGMF(
                 n_books=mod_n_books, 
                 n_users=mod_n_users
             ).to(device)
@@ -23,7 +23,11 @@ class Predictor:
 
 
     def get_average_reader_index(self):
-        user_embeddings = self.model.user_embed.weight.data
+        if type(self.model).__name__ == "RatingsPredictorGMF":
+            user_embeddings = self.model.user_embed.weight.data
+        else:
+            user_embeddings = self.model.user_embed_mlp.weight.data
+        
         average_user_embedding = torch.mean(user_embeddings, dim=0)
         cos_sim = F.cosine_similarity(user_embeddings, average_user_embedding.unsqueeze(0))
         average_reader_idx = torch.argmax(cos_sim).item()

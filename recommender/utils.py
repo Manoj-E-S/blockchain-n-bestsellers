@@ -1,4 +1,4 @@
-__all__ = ['BooksDataset', 'CudaUtils', 'DataLoaderUtils', 'DfUtils', 'EncoderUtils', 'RatingsPredictor']
+__all__ = ['BooksDataset', 'CudaUtils', 'DataLoaderUtils', 'DfUtils', 'EncoderUtils', 'RatingsPredictorGMF', 'RatingsPredictorMLP']
 
 import pandas as pd
 from sklearn import model_selection, preprocessing
@@ -84,6 +84,18 @@ class EncoderUtils:
             isbn_encoder = preprocessing.LabelEncoder()
             
         return userid_encoder, isbn_encoder
+    
+
+# Preferably implement on the DB instead of the csv? If csv is dynamically growing that's also fine
+class PopularBooksRecommender:
+    @staticmethod
+    def recommend(rdf_path, n=10):
+        ratings_df = DfUtils.get_ratings_df(rdf_path)
+        ratings_df = ratings_df.groupby("isbn").filter(lambda x: len(x) > 200)
+        sorted_rdf = ratings_df.sort_values("rating", ascending=False)
+        rndm_n_of_rated_over_4p5 = sorted_rdf[sorted_rdf["rating"] > 4.5].sample(n)["isbn"].values
+        
+        return rndm_n_of_rated_over_4p5
 
 
 class RatingsDataset(Dataset):
@@ -103,20 +115,69 @@ class RatingsDataset(Dataset):
         }
 
 
-class RatingsPredictor(nn.Module):
-    def __init__(self, n_books, n_users):
-        super(RatingsPredictor, self).__init__()      
-        self.user_embed = nn.Embedding(n_users, 32)
-        self.book_embed = nn.Embedding(n_books, 32)
-        self.out = nn.Linear(64, 1)
+class RatingsPredictorGMF(nn.Module):
+    def __init__(self, n_books, n_users, embedding_dim=32, hidden_dim=64):
+        super().__init__()
+        
+        self.user_embed = nn.Embedding(n_users, embedding_dim)
+        self.book_embed = nn.Embedding(n_books, embedding_dim)
+        self.out = nn.Linear(hidden_dim, 1)
 
 
     def forward(self, users, books):
         user_embed = self.user_embed(users)
         book_embed = self.book_embed(books)
-        output = torch.cat([user_embed, book_embed], dim=1) 
-        output = torch.sigmoid(self.out(output)) * 5
+        concat = torch.cat([user_embed, book_embed], dim=1) 
+        output = torch.sigmoid(self.out(concat)) * 5
+
+        return output
+
+
+class RatingsPredictorMLP(nn.Module):
+    def __init__(self, n_books, n_users, embedding_dim=32, hidden_dim=64):
+        super(RatingsPredictorMLP, self).__init__()
+
+        # GMF embeddings
+        self.user_embed_gmf = nn.Embedding(n_users, embedding_dim)
+        self.book_embed_gmf = nn.Embedding(n_books, embedding_dim)
+
+        # MLP embeddings
+        self.user_embed_mlp = nn.Embedding(n_users, embedding_dim)
+        self.book_embed_mlp = nn.Embedding(n_books, embedding_dim)
+        
+        # MLP layers
+        self.mlp = nn.Sequential(
+            nn.Linear(embedding_dim * 2, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU()
+        )
+
+        # Output layer
+        self.out = nn.Linear(embedding_dim + hidden_dim, 1)
+
+
+    def forward(self, users, books):
+        # GMF part
+        user_embed_gmf = self.user_embed_gmf(users)
+        book_embed_gmf = self.book_embed_gmf(books)
+        gmf = user_embed_gmf * book_embed_gmf # Matrix Dot Product
+        
+        # MLP part
+        user_embed_mlp = self.user_embed_mlp(users)
+        book_embed_mlp = self.book_embed_mlp(books)
+        mlp_input = torch.cat([user_embed_mlp, book_embed_mlp], dim=1)
+        mlp = self.mlp(mlp_input)
+        
+        # Concatenate GMF and MLP parts
+        concat = torch.cat([gmf, mlp], dim=1)
+
+        # Final output
+        output = torch.sigmoid(self.out(concat)) * 5
 
         return output
     
 
+if __name__ == "__main__":
+    pop_books = PopularBooksRecommender.recommend("./main_dataset/updated_ratings.csv", n=10)
+    print(pop_books)
