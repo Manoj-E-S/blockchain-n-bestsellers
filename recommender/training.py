@@ -9,7 +9,7 @@ import seaborn as sns
 sns.set_theme()
 
 from utils import (
-    CudaUtils, DataLoaderUtils, DfUtils, EncoderUtils, RatingsPredictor
+    CudaUtils, DataLoaderUtils, DfUtils, EncoderUtils, RatingsPredictorGMF, RatingsPredictorMLP
 )
 
 class Trainer:
@@ -20,7 +20,7 @@ class Trainer:
         self.mod_n_users = len(userid_encoder.classes_)
         self.batch_size = DataLoaderUtils.batch_size if not n_batches else n_batches
         
-        self.model = RatingsPredictor(
+        self.model = RatingsPredictorGMF(
                 n_books=self.mod_n_books,
                 n_users=self.mod_n_users
             ).to(device)

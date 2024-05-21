@@ -1,0 +1,42 @@
+[TRAINING AND CROSS-VALIDATION]
+    Fold 1
+        Epoch 1
+            Train Loss: 0.8074673290270905
+            Validation Loss: 0.7660752129151311
+        Epoch 2
+            Train Loss: 0.7111221359611599
+            Validation Loss: 0.7291772517835209
+    Fold 2
+        Epoch 1
+            Train Loss: 0.6794079293753122
+            Validation Loss: 0.6266235619392978
+        Epoch 2
+            Train Loss: 0.6090520639216536
+            Validation Loss: 0.6180023354474113
+    Fold 3
+        Epoch 1
+            Train Loss: 0.5967517773169357
+            Validation Loss: 0.5005501097954778
+        Epoch 2
+            Train Loss: 0.5293044695004365
+            Validation Loss: 0.4928614580637763
+
+    Average Validation Losses: [0.63108296 0.61334702]
+    Average Validation Losses: [0.69454235 0.61649289]
+
+    Train Losses (fold: [epochs])
+    1: [0.8074673290270905, 0.7111221359611599]
+    2: [0.6794079293753122, 0.6090520639216536]
+    3: [0.5967517773169357, 0.5293044695004365]
+
+    Validation Losses (fold: [epochs])
+    1: [0.7660752129151311, 0.7291772517835209]
+    2: [0.6266235619392978, 0.6180023354474113]
+    3: [0.5005501097954778, 0.4928614580637763]
+
+
+[TESTING]
+    Total Number of batches: 687
+    Minimum Errors per batch: 10
+    Maximum Errors per batch: 29
+    Average Errors ratio: 0.37799126637554586
