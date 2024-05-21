@@ -36,8 +36,8 @@
 2. Run `flask --app bnb run [--debug]`
 
 # Initialize the app with the DB
-1. Navigate to the project's root directory
-2. Run `flask --app bnb init-db`
-
-
-
+1. Navigate to the bnb folder
+2. Add `DATABASE_URL` to .env file.
+3. Run `flask db init` for initialization of migration files
+4. Run `flask db migrate` for creating migration files
+5. Run `flask db upgrade` to make tables (make sure your database server is up and running)
