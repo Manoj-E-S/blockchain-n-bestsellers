@@ -1,44 +1,28 @@
-# https://flask.palletsprojects.com/en/3.0.x/tutorial/factory/ [REFER HERE]
-
-import os
-
 from flask import Flask
+from .db_setup import *
+from dotenv import load_dotenv
+import os
+from .schema import User, Book, Rating, Exchange, TrainableBook, Message, ServerStats, user_messages
 
+load_dotenv()
+db = get_db()
+migrate = get_migrate()
 
-def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)\
+def create_app():
     
-    # Development-Instance-Config
-    app.config.from_mapping(
-        SECRET_KEY='dev',
-    )
-
-    if test_config is None:
-        # Override with Production-Instance-Config
-        app.config.from_pyfile('config.py', silent=True)
-    else:
-        # Override with Testing-Instance-Config
-        app.config.from_mapping(test_config)
-
-    # Create instance directory if it doesn't exist
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
-    # Routing
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
-    from . import db
     db.init_app(app)
-    
-    from . import auth
-    app.register_blueprint(auth.bp)
-    
-    from . import recommend
-    app.register_blueprint(recommend.bp)
-    app.add_url_rule('/recommend', endpoint='recommend_popular')
+    migrate.init_app(app, db)
 
+    
+    # Register blueprints
+    # from .auth.routes import auth_bp
+    # from .recommend.routes import recommend_bp
+    
+    # app.register_blueprint(auth_bp)
+    # app.register_blueprint(recommend_bp)
+    
     return app
