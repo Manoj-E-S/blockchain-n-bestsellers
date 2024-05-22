@@ -2,19 +2,20 @@ from flask import Flask
 from .db_setup import *
 from dotenv import load_dotenv
 import os
-from .schema import User, Book, Rating, Exchange, TrainableBook, Message, ServerStats, user_messages
 
 load_dotenv()
-db = get_db()
-migrate = get_migrate()
+
 
 def create_app():
     
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
+
+    db = get_db()
     db.init_app(app)
+    
+    migrate = get_migrate()
     migrate.init_app(app, db)
 
     
