@@ -12,5 +12,6 @@ dependencies:
   - python=3.9.*
   - seaborn
   - statsmodels
+  - pandas
   - pip:
-    - -r requirements4pip.txt
+    - -r requirements_torch.txt

@@ -28,16 +28,21 @@
 4. `conda deactivate` - Deactivates the environment
 
 # Dependency installation
-1. Requirements are installed while creating the environment `conda env create -f requirements.yml --prefix ./venv`
-2. If not so, they can be installed _**after activating the environment**_, using `pip install -r requirements4pip.txt`
+1. Requirements are installed while creating the environment `conda env create -f requirements_conda.yml --prefix ./.venv`
+2. If not so, they can be installed _**after activating the environment**_, using `pip install -r requirements_conda_pip.txt`
 
 # Run the flask app
-1. Navigate to the project's root directory
-2. Run `flask --app bnb run [--debug]`
+
+1. Run this outside all environments to download **pipenv**: `pip install pipenv`. This shall be the dependency manager for Flask.
+2. Navigate to the backend's root directory from the project's root directory: **`cd ./bnb`**
+3. Run the following: `pipenv install` - installs all dependencies [Pipenv reference](https://realpython.com/pipenv-guide/)
+4. Navigate to the project's root directory: `cd ..`
+5. Prepend each of the following flask commands with: `pipenv run`
+6. For example, to run the app: `pipenv run flask --app bnb run [--debug]`
 
 # Initialize the app with the DB
 1. Navigate to the bnb folder
-2. Add `DATABASE_URL` to .env file.
+2. Add a .env file as per the .env.example file in /bnb/bnb.
 3. Run `flask db init` for initialization of migration files
 4. Run `flask db migrate` for creating migration files
 5. Run `flask db upgrade` to make tables (make sure your database server is up and running)
