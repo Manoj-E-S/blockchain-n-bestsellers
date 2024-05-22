@@ -1,3 +1,7 @@
+# Bookworms and Bestsellers (B&B)
+### [B&B](https://bookwormsandbestsellers.in) is a book recommendation and exchange platform for everyone.
+#### It is being developed as a Minor Project be me, [Antriksh Narang](https://github.com/AntrikshNarang) and [Arjun Nambiar](https://github.com/ShadowSlayer03)
+
 # Install Miniconda
 ### For Ubuntu (Debian-based)
 1. Download Miniconda for Python 3.9 bash script [here](https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-Linux-x86_64.sh)
