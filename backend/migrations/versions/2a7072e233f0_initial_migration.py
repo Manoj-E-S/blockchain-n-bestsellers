@@ -1,8 +1,8 @@
-"""empty message
+"""Initial migration
 
-Revision ID: a425f4bd2dc2
+Revision ID: 2a7072e233f0
 Revises: 
-Create Date: 2024-05-22 13:10:40.961541
+Create Date: 2024-05-24 14:07:59.347935
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a425f4bd2dc2'
+revision = '2a7072e233f0'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,15 +29,15 @@ def upgrade():
     sa.Column('imgUrlLarge', sa.String(length=250), nullable=True),
     sa.Column('year_of_publication', sa.String(length=50), nullable=False),
     sa.Column('publisher', sa.String(length=50), nullable=False),
-    sa.PrimaryKeyConstraint('bId'),
-    sa.UniqueConstraint('ISBN')
+    sa.PrimaryKeyConstraint('bId', name=op.f('pk_books')),
+    sa.UniqueConstraint('ISBN', name=op.f('uq_books_ISBN'))
     )
     op.create_table('server_stats',
     sa.Column('sId', sa.Integer(), nullable=False),
     sa.Column('books_exchanged', sa.Integer(), nullable=False),
     sa.Column('number_of_users', sa.Integer(), nullable=False),
     sa.Column('books_available', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('sId')
+    sa.PrimaryKeyConstraint('sId', name=op.f('pk_server_stats'))
     )
     op.create_table('users',
     sa.Column('uId', sa.Integer(), nullable=False),
@@ -50,34 +50,34 @@ def upgrade():
     sa.Column('books_rated', sa.Integer(), nullable=False),
     sa.Column('date_joined', sa.Date(), nullable=False),
     sa.Column('exchanges_made', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('uId'),
-    sa.UniqueConstraint('email')
+    sa.PrimaryKeyConstraint('uId', name=op.f('pk_users')),
+    sa.UniqueConstraint('email', name=op.f('uq_users_email'))
     )
     op.create_table('exchanges',
     sa.Column('eId', sa.Integer(), nullable=False),
     sa.Column('uId', sa.Integer(), nullable=False),
     sa.Column('bId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['bId'], ['books.bId'], ),
-    sa.ForeignKeyConstraint(['uId'], ['users.uId'], ),
-    sa.PrimaryKeyConstraint('eId')
+    sa.ForeignKeyConstraint(['bId'], ['books.bId'], name=op.f('fk_exchanges_bId_books')),
+    sa.ForeignKeyConstraint(['uId'], ['users.uId'], name=op.f('fk_exchanges_uId_users')),
+    sa.PrimaryKeyConstraint('eId', name=op.f('pk_exchanges'))
     )
     op.create_table('ratings',
     sa.Column('rId', sa.Integer(), nullable=False),
     sa.Column('uId', sa.Integer(), nullable=False),
     sa.Column('bId', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['bId'], ['books.bId'], ),
-    sa.ForeignKeyConstraint(['uId'], ['users.uId'], ),
-    sa.PrimaryKeyConstraint('rId')
+    sa.ForeignKeyConstraint(['bId'], ['books.bId'], name=op.f('fk_ratings_bId_books')),
+    sa.ForeignKeyConstraint(['uId'], ['users.uId'], name=op.f('fk_ratings_uId_users')),
+    sa.PrimaryKeyConstraint('rId', name=op.f('pk_ratings'))
     )
     op.create_table('trainablebooks',
     sa.Column('tId', sa.Integer(), nullable=False),
     sa.Column('uId', sa.Integer(), nullable=False),
     sa.Column('bId', sa.Integer(), nullable=False),
     sa.Column('rating', sa.Float(), nullable=False),
-    sa.ForeignKeyConstraint(['bId'], ['books.bId'], ),
-    sa.ForeignKeyConstraint(['uId'], ['users.uId'], ),
-    sa.PrimaryKeyConstraint('tId')
+    sa.ForeignKeyConstraint(['bId'], ['books.bId'], name=op.f('fk_trainablebooks_bId_books')),
+    sa.ForeignKeyConstraint(['uId'], ['users.uId'], name=op.f('fk_trainablebooks_uId_users')),
+    sa.PrimaryKeyConstraint('tId', name=op.f('pk_trainablebooks'))
     )
     op.create_table('messages',
     sa.Column('mId', sa.Integer(), nullable=False),
@@ -88,26 +88,18 @@ def upgrade():
     sa.Column('currentState', sa.String(length=50), nullable=False),
     sa.Column('message', sa.String(length=250), nullable=False),
     sa.Column('eId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['eId'], ['exchanges.eId'], ),
-    sa.ForeignKeyConstraint(['inReturnFor'], ['books.bId'], ),
-    sa.ForeignKeyConstraint(['requestFor'], ['books.bId'], ),
-    sa.ForeignKeyConstraint(['requesteeId'], ['users.uId'], ),
-    sa.ForeignKeyConstraint(['requesterId'], ['users.uId'], ),
-    sa.PrimaryKeyConstraint('mId')
-    )
-    op.create_table('user_messages',
-    sa.Column('uId', sa.Integer(), nullable=False),
-    sa.Column('mId', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['mId'], ['messages.mId'], ),
-    sa.ForeignKeyConstraint(['uId'], ['users.uId'], ),
-    sa.PrimaryKeyConstraint('uId', 'mId')
+    sa.ForeignKeyConstraint(['eId'], ['exchanges.eId'], name=op.f('fk_messages_eId_exchanges')),
+    sa.ForeignKeyConstraint(['inReturnFor'], ['books.bId'], name=op.f('fk_messages_inReturnFor_books')),
+    sa.ForeignKeyConstraint(['requestFor'], ['books.bId'], name=op.f('fk_messages_requestFor_books')),
+    sa.ForeignKeyConstraint(['requesteeId'], ['users.uId'], name=op.f('fk_messages_requesteeId_users')),
+    sa.ForeignKeyConstraint(['requesterId'], ['users.uId'], name=op.f('fk_messages_requesterId_users')),
+    sa.PrimaryKeyConstraint('mId', name=op.f('pk_messages'))
     )
     # ### end Alembic commands ###
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('user_messages')
     op.drop_table('messages')
     op.drop_table('trainablebooks')
     op.drop_table('ratings')

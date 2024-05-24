@@ -1,15 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from datetime import datetime
 
-db = SQLAlchemy()
-migrate = Migrate()
-
-def get_db():
-    return db
-
-def get_migrate():
-    return migrate
+from .db_setup import db
 
 class User(db.Model):
     __tablename__ = "users"
