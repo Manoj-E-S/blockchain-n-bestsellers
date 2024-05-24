@@ -11,6 +11,7 @@ def create_app():
     app = get_app()
 
     db = get_db()
+    db.init_app(app)
 
     migrate = get_migrate()
     migrate.init_app(app, db)

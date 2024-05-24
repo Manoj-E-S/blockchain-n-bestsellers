@@ -2,7 +2,8 @@
 ### [B&B](https://bookwormsandbestsellers.in) is a book recommendation and exchange platform for everyone.
 #### It is being developed as a Minor Project be me, [Antriksh Narang](https://github.com/AntrikshNarang) and [Arjun Nambiar](https://github.com/ShadowSlayer03)
 
-# Install Miniconda
+## Install Miniconda
+(Skip this step if you are not working on the ML part of the project)
 ### For Ubuntu (Debian-based)
 1. Download Miniconda for Python 3.9 bash script [here](https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-Linux-x86_64.sh)
 2. Grant execution permissions using:
@@ -10,43 +11,75 @@
 3. Install Miniconda 3 using:
     `./Miniconda3-py39_23.5.2-0-Linux-x86_64.sh`
 4. Continue the default installation process until "Thank you for installing Miniconda3!" message is obtained.
-5. Once the installation completes, the following commands register conda as a new command to the default bash script (bashrc file):
-    1. `source ~/.bashrc`
-    2. `conda config --set auto_activate_base false`
-    3. `source ~/.bashrc`
+5. Once the installation completes, the following commands register conda as a new command to the default bash script (bashrc file)
+```
+source ~/.bashrc
+conda config --set auto_activate_base false
+source ~/.bashrc
+```
 
 ### For Windows
 1. Download Miniconda for Python 3.9 .exe file from [here](https://repo.anaconda.com/miniconda/Miniconda3-py39_23.5.2-0-Windows-x86_64.exe)
 2. Follow standard installation procedure
 
-# Initial virtual-environment and Notebook server setup
-1. `conda env create -f requirements.yml --prefix /path/to/venv` - Creates a new environment installing the dependencies from the .yml file
-2. `conda env list` - Should list all environments - some with names, some with only path
-3. `conda activate /path/to/venv` - Activates the said environment
-4. `python -m ipykernel install --user [--name=<ENV_NAME>] [--prefix=/path/to/venv]` - (OPTIONAL) enables to open directories using the `jupyter-notebook` or `jupyter-lab` server.
+### Initial virtual-environment and Notebook server setup using conda
+1. Create a new environment installing the dependencies from the yml file:
+```
+conda env create -f requirements.yml --prefix /path/to/venv
+```
 
-# Using the virtual environment:
+2. List all environments - some with names, some with only path:
+```
+conda env list    
+```
+
+3. Activates the said environment:
+```
+conda activate /path/to/venv
+```
+
+4. (OPTIONAL) Enable to open directories using the jupyter-notebook or jupyter-lab server:
+```
+python -m ipykernel install --user [--name=<ENV_NAME>] [--prefix=/path/to/venv]
+```
+
+### Using the virtual environment:
 1. `conda env list` - Lists available environments
 2. `conda activate /path/to/venv` - Activates the environment env_name
-3. Run project related commands.
+3. Run project related commands/scripts.
 4. `conda deactivate` - Deactivates the environment
 
-# Dependency installation
+## Project Set-up (ML)
 1. Requirements are installed while creating the environment `conda env create -f requirements_conda.yml --prefix ./.venv`
-2. If not so, they can be installed _**after activating the environment**_, using `pip install -r requirements_conda_pip.txt`
+2. Activate the conda environment.
+2. conda should have installed pip requirements from _requirements_conda_pip.txt_ file. But sometimes torch fails to install during the enviroment set up. In that case run `pip install -r requirements_conda_pip.txt`
+3. Run any suitable commands/scripts.
+4. Deactivate the conda environment.
 
-# Run the flask app
+## Project Set-up (Backend)
 
-1. Run this outside all environments to download **pipenv**: `pip install pipenv`. This shall be the dependency manager for Flask.
-2. Navigate to the backend's root directory from the project's root directory: **`cd ./bnb`**
-3. Run the following: `pipenv install` - installs all dependencies [Pipenv reference](https://realpython.com/pipenv-guide/)
-4. Navigate to the project's root directory: `cd ..`
-5. Prepend each of the following flask commands with: `pipenv run`
-6. For example, to run the app: `pipenv run flask --app bnb run [--debug]`
+1. Run this **outside any environments** to download _pipenv_: `pip install pipenv`. This shall be the dependency manager for all python projects. Here we are using it to manage flask and its dependencies.
+2. Navigate to the backend's root directory from the project's root directory: `cd ./backend`
+3. Run the following to install all production and development dependencies from the Pipfile [Pipenv reference](https://realpython.com/pipenv-guide/):
+```
+pipenv install
+pipenv install --dev
+```
+4. Run the shell in the environment created by pipenv using `pipenv shell`
+5. Run all Flask related commands here.
+6. Exit the shell (ie. the environment) using the command `exit`
 
-# Initialize the app with the DB
-1. Navigate to the bnb folder
-2. Add a .env file as per the .env.example file in /bnb/bnb.
-3. Run `flask db init` for initialization of migration files
-4. Run `flask db migrate` for creating migration files
-5. Run `flask db upgrade` to make tables (make sure your database server is up and running)
+### Initialize the app and the DB
+1. Navigate to the root directory of the backend: `cd ./backend`
+2. Add a .env file as per the .env.example file in this directory.
+3. Run the app using 
+```
+flask run                       # if FLASK_ENV="bnb" is listed in .env file
+flask --app bnb run [--debug]   # Otherwise
+```
+4. Run `flask db init` for initialization of the `migrations/` directory
+5. Use the following two commands to make migrations and upgrade the database to those changes:
+```
+flask db migrate    # for creating a migration in ./migrations/versions
+flask db upgrade    # to actually upgrade the database
+```
