@@ -28,10 +28,15 @@ def get_db_uri_local():
     DB_URI = f'mysql+pymysql://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}'
     return DB_URI
 
+def get_db_uri():
+    env = os.getenv("FLASK_ENV", "dev")
+    if env == "prod":
+        return get_db_uri_cloud()
+    return get_db_uri_local()
+
 def get_app():
     app = Flask("bnb")
-    db_uri = get_db_uri_local()
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_DATABASE_URI'] = get_db_uri()
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     return app
 

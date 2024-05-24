@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b1dc2c72028e96a4afa3e43687e3f91f8aeffeef64489715ab8b8eee1d8e5d63"
+            "sha256": "0d4f0759c9a0d8fe78c14bd5f3ed76cec1ee25d5af751858dad9c750957ca6d0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -370,6 +370,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==2.0.30"
+        },
+        "sqlalchemy-cockroachdb": {
+            "hashes": [
+                "sha256:0d5d50e805b024cb2ccd85423a5c1a367d1a56a5cd0ea47765233fd47665070d",
+                "sha256:119756eb905855d6a11345b99cfe853031a3fe598a9c4bf35a8ddac9f89fe8cc"
+            ],
+            "index": "pypi",
+            "version": "==2.0.2"
         },
         "typing-extensions": {
             "hashes": [
