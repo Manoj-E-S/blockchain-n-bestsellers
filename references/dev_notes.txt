@@ -1,3 +1,11 @@
+{
+  NOTE-1: During testing of db structure/commands/operations use local DB (like mysql@localhost:3306) and fix all errors. Then in pipenc shell run:
+  - export FLASK_ENV=prod
+  - flask db upgrade
+  - flask db migrate
+  - flask db upgrade
+}
+
 Commit [Manoj E S][Tue May 7 2024 00:52:22 +0530] : [Implement ipynbs for training and prediction - iteration1]
 - A basic embedding implementation of the MatrixFactorisation approach to Rating Prediction system (Book recommender - primitive) is done
 - Fixes required:

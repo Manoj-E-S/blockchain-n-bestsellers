@@ -77,8 +77,8 @@ pipenv install --dev
 flask run                       # if FLASK_ENV="bnb" is listed in .env file
 flask --app bnb run [--debug]   # Otherwise
 ```
-4. Run `flask db init` for initialization of the `migrations/` directory
-5. Use the following two commands to make migrations and upgrade the database to those changes:
+4. Run `flask db init` for initialization of the `migrations/` directory **(only once)**
+5. Use the following two commands to make migrations and upgrade the database to those changes **(every time the schema changes)**:
 ```
 flask db migrate    # for creating a migration in ./migrations/versions
 flask db upgrade    # to actually upgrade the database
