@@ -18,3 +18,22 @@
 
 5. Create a requirements4pip.txt file using pipreqs (based on pip packages used in the project)
     - pipreqs [--force] ./
+
+6. Using pipenv as a package manager
+    - pipenv install [--dev]
+    (Install project dependencies in a separate environment or initialize a dependency management environment if it doesn't exist)
+
+    - pipenv shell
+    (Activate project environment and start a shell instance of it)
+
+    - pipenv (un)install <pkg_name>
+    ((Un)Installs the new package and adds it to the dependencies)
+
+    - pipenv run <cmd>
+    (Runs the custom/existing command line cmd inside the project environment)
+
+    - pipenv lock
+    (Locks any dependencies installed in 'pipenv shell' in Pipfile.lock to enforce version consistency)
+    
+    - pipenv --rm
+    (Remove (ie. uproot) the environment associated with the current project)

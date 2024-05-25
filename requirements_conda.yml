@@ -14,4 +14,4 @@ dependencies:
   - statsmodels
   - pandas
   - pip:
-    - -r requirements_torch.txt
+    - -r requirements_conda_pip.txt

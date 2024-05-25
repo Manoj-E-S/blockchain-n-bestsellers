@@ -15,5 +15,8 @@ sqlalchemy-cockroachdb = "*"
 [dev-packages]
 pymysql = "*"
 
+[scripts]
+dev = "flask run --port 3000 --host localhost --debug"
+
 [requires]
 python_version = "3"

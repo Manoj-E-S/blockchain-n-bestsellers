@@ -1,0 +1,804 @@
+{
+  "kind": "books#volumes",
+  "totalItems": 1531,
+  "items": [
+    {
+      "kind": "books#volume",
+      "id": "PGR2AwAAQBAJ",
+      "etag": "2Tx3xZ+BpPU",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/PGR2AwAAQBAJ",
+      "volumeInfo": {
+        "title": "To Kill a Mockingbird",
+        "authors": [
+          "Harper Lee"
+        ],
+        "publisher": "Harper Collins",
+        "publishedDate": "2014-07-08",
+        "description": "Voted America's Best-Loved Novel in PBS's The Great American Read Harper Lee's Pulitzer Prize-winning masterwork of honor and injustice in the deep South—and the heroism of one man in the face of blind and violent hatred One of the most cherished stories of all time, To Kill a Mockingbird has been translated into more than forty languages, sold more than forty million copies worldwide, served as the basis for an enormously popular motion picture, and was voted one of the best novels of the twentieth century by librarians across the country. A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice, it views a world of great beauty and savage inequities through the eyes of a young girl, as her father—a crusading local lawyer—risks everything to defend a black man unjustly accused of a terrible crime.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780062368683"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0062368680"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 342,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "averageRating": 3.5,
+        "ratingsCount": 15,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "2.26.24.0.preview.2",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=PGR2AwAAQBAJ&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=1&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=PGR2AwAAQBAJ&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/To_Kill_a_Mockingbird.html?hl=&id=PGR2AwAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/To_Kill_a_Mockingbird-sample-epub.acsm?id=PGR2AwAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=PGR2AwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "One of the most cherished stories of all time, To Kill a Mockingbird has been translated into more than forty languages, sold more than forty million copies worldwide, served as the basis for an enormously popular motion picture, and was ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "JQGv8eqVMrMC",
+      "etag": "66gyzjpc8Nk",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/JQGv8eqVMrMC",
+      "volumeInfo": {
+        "title": "To Kill a Mockingbird",
+        "authors": [
+          "Harper Lee"
+        ],
+        "publisher": "Random House",
+        "publishedDate": "1960",
+        "description": "Theatre program.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780099466734"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0099466732"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 323,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.14.1.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=JQGv8eqVMrMC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=JQGv8eqVMrMC&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=JQGv8eqVMrMC&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=2&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=JQGv8eqVMrMC&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/To_Kill_a_Mockingbird.html?hl=&id=JQGv8eqVMrMC"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=JQGv8eqVMrMC&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Theatre program."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "XEkdEAAAQBAJ",
+      "etag": "swANqUBRVW0",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/XEkdEAAAQBAJ",
+      "volumeInfo": {
+        "title": "To Kill a Mockingbird: A Graphic Novel",
+        "subtitle": "A Graphic Novel",
+        "authors": [
+          "Harper Lee",
+          "Fred Fordham"
+        ],
+        "publisher": "HarperCollins",
+        "publishedDate": "2018-10-30",
+        "description": "“This gorgeously rendered graphic-novel version provides a new perspective for old fans but also acts as an immersive introduction for youngsters as well as any adult who somehow missed out on the iconic story set in Maycomb, Alabama.”--USA Today A beautifully crafted graphic novel adaptation of Harper Lee’s beloved, Pulitzer Prize–winning American classic, voted America's best-loved novel in PBS's Great American Read. \"Shoot all the bluejays you want, if you can hit ‘em, but remember it’s a sin to kill a mockingbird.\" A haunting portrait of race and class, innocence and injustice, hypocrisy and heroism, tradition and transformation in the Deep South of the 1930s, Harper Lee’s To Kill a Mockingbird remains as important today as it was upon its initial publication in 1960, during the turbulent years of the Civil Rights movement. Now, this most beloved and acclaimed novel is reborn for a new age as a gorgeous graphic novel. Scout, Jem, Boo Radley, Atticus Finch, and the small town of Maycomb, Alabama, are all captured in vivid and moving illustrations by artist Fred Fordham. Enduring in vision, Harper Lee’s timeless novel illuminates the complexities of human nature and the depths of the human heart with humor, unwavering honesty, and a tender, nostalgic beauty. Lifetime admirers and new readers alike will be touched by this special visual edition that joins the ranks of the graphic novel adaptations of A Wrinkle in Time and The Alchemist.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780062908964"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0062908960"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 288,
+        "printType": "BOOK",
+        "categories": [
+          "Comics & Graphic Novels"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "preview-1.0.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=XEkdEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=XEkdEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=XEkdEAAAQBAJ&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=3&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=XEkdEAAAQBAJ&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/To_Kill_a_Mockingbird_A_Graphic_Novel.html?hl=&id=XEkdEAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false,
+          "acsTokenLink": "http://books.google.co.in/books/download/To_Kill_a_Mockingbird_A_Graphic_Novel-sample-epub.acsm?id=XEkdEAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=XEkdEAAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Lifetime admirers and new readers alike will be touched by this special visual edition that joins the ranks of the graphic novel adaptations of A Wrinkle in Time and The Alchemist."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "RyJtJZPX8jwC",
+      "etag": "afsWCrUn3ZE",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/RyJtJZPX8jwC",
+      "volumeInfo": {
+        "title": "Harper Lee's To Kill a Mockingbird",
+        "subtitle": "New Essays",
+        "authors": [
+          "Michael J. Meyer"
+        ],
+        "publisher": "Scarecrow Press",
+        "publishedDate": "2010-10-14",
+        "description": "In 1960, To Kill a Mockingbird was published to critical acclaim. To commemorate To Kill a Mockingbird's 50th anniversary, Michael J. Meyer has assembled a collection of new essays that celebrate this enduring work of American literature. These essays approach the novel from educational, legal, social, and thematic perspectives. Harper Lee's only novel won the Pulitzer Prize and was transformed into a beloved film starring Gregory Peck as Atticus Finch. An American classic that frequently appears in middle school and high school curriculums, the novel has been subjected to criticism for its subject matter and language. Still relevant and meaningful, To Kill a Mockingbird has nonetheless been under-appreciated by many critics. There are few books that address Lee's novel's contribution to the American canon and still fewer that offer insights that can be used by teachers and by students. These essays suggest that author Harper Lee deserves more credit for skillfully shaping a masterpiece that not only addresses the problems of the 1930s but also helps its readers see the problems and prejudices the world faces today. Intended for high school and undergraduate usage, as well as for teachers planning to use To Kill a Mockingbird in their classrooms, this collection will be a valuable resource for all teachers of American literature.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780810877238"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0810877236"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 292,
+        "printType": "BOOK",
+        "categories": [
+          "Literary Criticism"
+        ],
+        "averageRating": 3.5,
+        "ratingsCount": 14,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.3.3.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=RyJtJZPX8jwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=RyJtJZPX8jwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=RyJtJZPX8jwC&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=4&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=RyJtJZPX8jwC&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harper_Lee_s_To_Kill_a_Mockingbird.html?hl=&id=RyJtJZPX8jwC"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Harper_Lee_s_To_Kill_a_Mockingbird-sample-epub.acsm?id=RyJtJZPX8jwC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Harper_Lee_s_To_Kill_a_Mockingbird-sample-pdf.acsm?id=RyJtJZPX8jwC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=RyJtJZPX8jwC&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "These essays approach the novel from educational, legal, social, and thematic perspectives. Harper Lee&#39;s only novel won the Pulitzer Prize and was transformed into a beloved film starring Gregory Peck as Atticus Finch."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "-D8WBAAAQBAJ",
+      "etag": "XR2DmLMa0WA",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/-D8WBAAAQBAJ",
+      "volumeInfo": {
+        "title": "To Kill a Mockingbird (Enhanced Edition)",
+        "authors": [
+          "Harper Lee"
+        ],
+        "publisher": "Harper Collins",
+        "publishedDate": "2014-11-04",
+        "description": "Voted America's Best-Loved Novel in PBS's The Great American Read Harper Lee's Pulitzer Prize-winning masterwork of honor and injustice in the deep South—and the heroism of one man in the face of blind and violent hatred One of the most cherished stories of all time, To Kill a Mockingbird has been translated into more than forty languages, sold more than forty million copies worldwide, served as the basis for an enormously popular motion picture, and was voted one of the best novels of the twentieth century by librarians across the country. A gripping, heart-wrenching, and wholly remarkable tale of coming-of-age in a South poisoned by virulent prejudice, it views a world of great beauty and savage inequities through the eyes of a young girl, as her father—a crusading local lawyer—risks everything to defend a black man unjustly accused of a terrible crime.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9780062369635"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "0062369636"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 336,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "averageRating": 3,
+        "ratingsCount": 2,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.11.13.0.preview.2",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=-D8WBAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=-D8WBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=-D8WBAAAQBAJ&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=5&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=-D8WBAAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=-D8WBAAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 872.09,
+          "currencyCode": "INR"
+        },
+        "retailPrice": {
+          "amount": 436.04,
+          "currencyCode": "INR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=-D8WBAAAQBAJ&rdid=book--D8WBAAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 872090000,
+              "currencyCode": "INR"
+            },
+            "retailPrice": {
+              "amountInMicros": 436040000,
+              "currencyCode": "INR"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/To_Kill_a_Mockingbird_Enhanced_Edition-sample-epub.acsm?id=-D8WBAAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=-D8WBAAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "This enhanced digital edition of Harper Lee’s Pulitzer prize-winning masterwork of honor and injustice in the deep south includes audio of Sissy Spacek performing the audiobook and video footage from the documentary Hey Boo: Harper Lee ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "QInlCgAAQBAJ",
+      "etag": "lR8q5SLcNdw",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/QInlCgAAQBAJ",
+      "volumeInfo": {
+        "title": "Go Set a Watchman",
+        "authors": [
+          "Harper Lee"
+        ],
+        "publisher": "Mizan Publishing",
+        "publishedDate": "2015-11-12",
+        "description": "Dua puluh tahun lalu, Jean Louise menyaksikan Atticus, sang Ayah, membela Negro di pengadilan Maycomb County. Kini, Jean Louise menyadari bahwa Maycomb dan sang Ayah, ternyata tak seperti yang dia kira selama ini dan dia pun bukan Scout yang polos lagi. Go Set a Watchman adalah naskah pertama yang diajukan Harper Lee kepada penerbit sebelum To Kill a Mockingbird, yang memenangi Pulitzer. Setelah 60 tahun dianggap hilang, naskah berharga ini ditemukan pada akhir 2014. Terbitnya Go Set a Watchman disambut animo luar biasa. Buku ini terjual lebih dari 1,1 juta kopi di minggu pertama, memuncaki daftar bestseller di Amerika selama 5 minggu berturut-turut dalam 1,5 bulan, dan mengalahkan penjualan Harry Potter serta 50 Shades of Grey. Go Set a Watchman, warisan berharga Harper Lee, penulis Amerika paling berpengaruh pada abad ke-20. \"Go Set a Watchman mempertanyakan beberapa hal penting yang justru disamarkan dalam To Kill a Mockingbird. Menghibur, lucu, tapi lugas dan jujur.\"-Ursula K. Le Guin, penulis The Earthsea Cycle \"Aset terbesar Go Set a Watchman ialah perannya dalam memicu diskusi jujur tentang sejarah gelap Amerika mengenai persamaan ras.\"-San Francisco Chronicle \"Luar biasa, sebuah novel yang ditulis lebih dari 50 tahun lalu ternyata masih kontekstual dengan masalah yang kita hadapi sekarang, tentang ras dan ketidakadilan.\"-Chicago Tribune \"Go Set a Watchman lebih kompleks daripada To Kill a Mockingbird, karya klasik Harper Lee. Sebuah novel yang lengkap … sebuah karya sastra baru yang memuaskan dan autentik.\" -The Guardian \"Go Set a Watchman memberikan pencerahan tentang kompleksitas dan kecerdasan salah satu penulis Amerika yang paling penting.\"-USA Today \"Seperti yang dikemukakan Faulkner, kisah yang bagus adalah kisah manusia yang berkonflik dengan nuraninya. Dan itu adalah ringkasan yang tepat tentang Go Set a Watchman.\"-Daily Beast \"Kompleksitas karakter Atticus membuat Go Set a Watchman pantas dibaca. Dengan Mockingbird, Harper Lee membuat kita mempertanyakan siapa sebenarnya diri kita dan apa yang sebenarnya kita tahu. Go Set a Watchman meneruskan tradisi mulia ini.\" -New York Post [Mizan, Mizan Publishing, Novel, Terjemahan, Legendaris, Indonesia]",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9786021637883"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "6021637887"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": false
+        },
+        "pageCount": 288,
+        "printType": "BOOK",
+        "categories": [
+          "Fiction"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "1.1.2.0.preview.2",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=QInlCgAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=QInlCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "id",
+        "previewLink": "http://books.google.co.in/books?id=QInlCgAAQBAJ&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=6&source=gbs_api",
+        "infoLink": "https://play.google.com/store/books/details?id=QInlCgAAQBAJ&source=gbs_api",
+        "canonicalVolumeLink": "https://play.google.com/store/books/details?id=QInlCgAAQBAJ"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "FOR_SALE",
+        "isEbook": true,
+        "listPrice": {
+          "amount": 322.38,
+          "currencyCode": "INR"
+        },
+        "retailPrice": {
+          "amount": 225.67,
+          "currencyCode": "INR"
+        },
+        "buyLink": "https://play.google.com/store/books/details?id=QInlCgAAQBAJ&rdid=book-QInlCgAAQBAJ&rdot=1&source=gbs_api",
+        "offers": [
+          {
+            "finskyOfferType": 1,
+            "listPrice": {
+              "amountInMicros": 322380000,
+              "currencyCode": "INR"
+            },
+            "retailPrice": {
+              "amountInMicros": 225670000,
+              "currencyCode": "INR"
+            }
+          }
+        ]
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Go_Set_a_Watchman-sample-epub.acsm?id=QInlCgAAQBAJ&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=QInlCgAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Go Set a Watchman, warisan berharga Harper Lee, penulis Amerika paling berpengaruh pada abad ke-20. &quot;Go Set a Watchman mempertanyakan beberapa hal penting yang justru disamarkan dalam To Kill a Mockingbird."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "LaMTiorjM9cC",
+      "etag": "VLIY26D3ULw",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/LaMTiorjM9cC",
+      "volumeInfo": {
+        "title": "Harper Lee's To Kill a Mockingbird",
+        "authors": [
+          "Harper Lee"
+        ],
+        "publisher": "Infobase Publishing",
+        "publishedDate": "2010",
+        "description": "Discusses the writing of To kill a mockingbird by Harper Lee. Includes critical essays on the work and a brief biography of the author.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_13",
+            "identifier": "9781438132730"
+          },
+          {
+            "type": "ISBN_10",
+            "identifier": "1438132735"
+          }
+        ],
+        "readingModes": {
+          "text": true,
+          "image": true
+        },
+        "pageCount": 109,
+        "printType": "BOOK",
+        "categories": [
+          "Juvenile Nonfiction"
+        ],
+        "averageRating": 4,
+        "ratingsCount": 12,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": true,
+        "contentVersion": "0.2.3.0.preview.3",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=LaMTiorjM9cC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=LaMTiorjM9cC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=LaMTiorjM9cC&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=7&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=LaMTiorjM9cC&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harper_Lee_s_To_Kill_a_Mockingbird.html?hl=&id=LaMTiorjM9cC"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Harper_Lee_s_To_Kill_a_Mockingbird-sample-epub.acsm?id=LaMTiorjM9cC&format=epub&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Harper_Lee_s_To_Kill_a_Mockingbird-sample-pdf.acsm?id=LaMTiorjM9cC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=LaMTiorjM9cC&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Discusses the writing of To kill a mockingbird by Harper Lee. Includes critical essays on the work and a brief biography of the author."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "c9pbL5epUN4C",
+      "etag": "FLF7shj9zTw",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/c9pbL5epUN4C",
+      "volumeInfo": {
+        "title": "The Play of To Kill a Mockingbird",
+        "authors": [
+          "Harper Lee",
+          "Christopher Sergel"
+        ],
+        "publisher": "Heinemann",
+        "publishedDate": "1995",
+        "description": "\"In his play, Christopher Sergel has shifted the focus slightly. The result of this shift, I believe, hightlights the novel's universal qualities. [He] reminds us...that the issues explored are not those of a 'regional' work of art (as the novel is often categorised) but are of importance in Nottingham, Manchester, Birmingham or wherever the play is seen by an audience.\" - from Ray Speakman's introduction.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0435233114"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780435233112"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 136,
+        "printType": "BOOK",
+        "categories": [
+          "Drama"
+        ],
+        "averageRating": 4,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.3.5.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=c9pbL5epUN4C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=c9pbL5epUN4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=c9pbL5epUN4C&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=8&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=c9pbL5epUN4C&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/The_Play_of_To_Kill_a_Mockingbird.html?hl=&id=c9pbL5epUN4C"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/The_Play_of_To_Kill_a_Mockingbird-sample-pdf.acsm?id=c9pbL5epUN4C&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=c9pbL5epUN4C&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "The result of this shift, I believe, hightlights the novel&#39;s universal qualities. [He] reminds us...that the issues explored are not those of a &#39;regional&#39; work of art (as the novel is often categorised) but are of importance in Nottingham, ..."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "P6bzCgUuVroC",
+      "etag": "+2tqKNylbbE",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/P6bzCgUuVroC",
+      "volumeInfo": {
+        "title": "Harper Lee's To Kill a Mockingbird",
+        "subtitle": "A Full-length Play",
+        "authors": [
+          "Christopher Sergel"
+        ],
+        "publisher": "Dramatic Publishing",
+        "publishedDate": "1970",
+        "description": "Dramatization of the story about the explosion of racial hate in an Alabama town as viewed by a little girl whose father defends a black man accused of rape.",
+        "industryIdentifiers": [
+          {
+            "type": "ISBN_10",
+            "identifier": "0871290863"
+          },
+          {
+            "type": "ISBN_13",
+            "identifier": "9780871290861"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": true
+        },
+        "pageCount": 116,
+        "printType": "BOOK",
+        "categories": [
+          "Alabama"
+        ],
+        "averageRating": 5,
+        "ratingsCount": 1,
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "0.3.4.0.preview.1",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=P6bzCgUuVroC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=P6bzCgUuVroC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=P6bzCgUuVroC&printsec=frontcover&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=9&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=P6bzCgUuVroC&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/Harper_Lee_s_To_Kill_a_Mockingbird.html?hl=&id=P6bzCgUuVroC"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "PARTIAL",
+        "embeddable": true,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": true,
+          "acsTokenLink": "http://books.google.co.in/books/download/Harper_Lee_s_To_Kill_a_Mockingbird-sample-pdf.acsm?id=P6bzCgUuVroC&format=pdf&output=acs4_fulfillment_token&dl_type=sample&source=gbs_api"
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=P6bzCgUuVroC&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "SAMPLE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "Dramatization of the story about the explosion of racial hate in an Alabama town as viewed by a little girl whose father defends a black man accused of rape."
+      }
+    },
+    {
+      "kind": "books#volume",
+      "id": "UNkhAQAAIAAJ",
+      "etag": "X9pYWnD/UH0",
+      "selfLink": "https://content-books.googleapis.com/books/v1/volumes/UNkhAQAAIAAJ",
+      "volumeInfo": {
+        "title": "To Kill a Mockingbird",
+        "subtitle": "Threatening Boundaries",
+        "authors": [
+          "Claudia Durst Johnson"
+        ],
+        "publishedDate": "1994",
+        "description": "She then presents a five-part reading of Mockingbird, underscoring the novel's form and elucidating its pertinence for American society today. Special attention is paid to linking the novel's 1930s setting with the concomitant Scottsboro incident and connecting Mockingbird's writing in the 1950s with the concurrent events of the civil rights movement.",
+        "industryIdentifiers": [
+          {
+            "type": "OTHER",
+            "identifier": "STANFORD:36105009684593"
+          }
+        ],
+        "readingModes": {
+          "text": false,
+          "image": false
+        },
+        "pageCount": 152,
+        "printType": "BOOK",
+        "categories": [
+          "Literary Criticism"
+        ],
+        "maturityRating": "NOT_MATURE",
+        "allowAnonLogging": false,
+        "contentVersion": "1.4.2.0.preview.0",
+        "panelizationSummary": {
+          "containsEpubBubbles": false,
+          "containsImageBubbles": false
+        },
+        "imageLinks": {
+          "smallThumbnail": "http://books.google.com/books/content?id=UNkhAQAAIAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+          "thumbnail": "http://books.google.com/books/content?id=UNkhAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+        },
+        "language": "en",
+        "previewLink": "http://books.google.co.in/books?id=UNkhAQAAIAAJ&q=To+Kill+a+mocking+bird&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&cd=10&source=gbs_api",
+        "infoLink": "http://books.google.co.in/books?id=UNkhAQAAIAAJ&dq=To+Kill+a+mocking+bird&hl=&as_pt=BOOKS&source=gbs_api",
+        "canonicalVolumeLink": "https://books.google.com/books/about/To_Kill_a_Mockingbird.html?hl=&id=UNkhAQAAIAAJ"
+      },
+      "saleInfo": {
+        "country": "IN",
+        "saleability": "NOT_FOR_SALE",
+        "isEbook": false
+      },
+      "accessInfo": {
+        "country": "IN",
+        "viewability": "NO_PAGES",
+        "embeddable": false,
+        "publicDomain": false,
+        "textToSpeechPermission": "ALLOWED",
+        "epub": {
+          "isAvailable": false
+        },
+        "pdf": {
+          "isAvailable": false
+        },
+        "webReaderLink": "http://play.google.com/books/reader?id=UNkhAQAAIAAJ&hl=&as_pt=BOOKS&source=gbs_api",
+        "accessViewStatus": "NONE",
+        "quoteSharingAllowed": false
+      },
+      "searchInfo": {
+        "textSnippet": "She then presents a five-part reading of Mockingbird, underscoring the novel&#39;s form and elucidating its pertinence for American society today."
+      }
+    }
+  ]
+}
+

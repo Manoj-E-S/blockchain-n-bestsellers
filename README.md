@@ -1,6 +1,6 @@
 # Bookworms and Bestsellers (B&B)
 ### [B&B](https://bookwormsandbestsellers.in) is a book recommendation and exchange platform for everyone.
-#### It is being developed as a Minor Project be me, [Antriksh Narang](https://github.com/AntrikshNarang) and [Arjun Nambiar](https://github.com/ShadowSlayer03)
+It is being developed as a Minor Project be me, [Antriksh Narang](https://github.com/AntrikshNarang) and [Arjun Nambiar](https://github.com/ShadowSlayer03)
 
 ## Install Miniconda
 (Skip this step if you are not working on the ML part of the project)
