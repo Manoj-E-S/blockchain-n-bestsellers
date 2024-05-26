@@ -3,7 +3,7 @@ import os
 
 from .google_oauth_setup import get_auth_url, get_credentials
 
-PATH_TO_CLIENT_SECRET = os.path.join(os.path.dirname(__file__), "../.secret/client_secret.json")
+PATH_TO_CLIENT_SECRET = os.path.join(os.path.dirname(__file__), "../.secrets/client_secret.json")
 SCOPES = ['https://www.googleapis.com/auth/books']
 
 auth_bp = Blueprint("auth", __name__, url_prefix="/auth")
