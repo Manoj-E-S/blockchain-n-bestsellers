@@ -38,5 +38,7 @@ def get_app():
     app = Flask("bnb")
     app.config['SQLALCHEMY_DATABASE_URI'] = get_db_uri()
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SECRET_KEY'] = os.getenv("FLASK_APP_SECRET_KEY")
+    os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
     return app
 

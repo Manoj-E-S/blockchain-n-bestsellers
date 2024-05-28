@@ -6,6 +6,7 @@ from .schema import (
     User, Book, Rating, Exchange, TrainableBook, Message, ServerStats
 )
 
+
 def create_app():
     
     app = get_app()
@@ -18,10 +19,10 @@ def create_app():
 
     
     # Register blueprints
-    # from .auth.routes import auth_bp
-    # from .recommend.routes import recommend_bp
+    from .auth.routes import auth_bp
+    app.register_blueprint(auth_bp)
     
-    # app.register_blueprint(auth_bp)
+    # from .recommend.routes import recommend_bp
     # app.register_blueprint(recommend_bp)
     
     return app

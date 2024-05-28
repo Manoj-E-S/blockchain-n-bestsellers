@@ -11,6 +11,11 @@ python-dotenv = "*"
 psycopg2-binary = "*"
 flask-script = "*"
 sqlalchemy-cockroachdb = "*"
+colorama = "*"
+google-api-python-client = "*"
+google-auth = "*"
+google-auth-oauthlib = "*"
+google-auth-httplib2 = "*"
 
 [dev-packages]
 pymysql = "*"
