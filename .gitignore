@@ -1,6 +1,7 @@
 # Custom
 .secrets/
 .secret/
+gbooks/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
