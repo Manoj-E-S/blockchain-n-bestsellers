@@ -2,6 +2,8 @@
 .secrets/
 .secret/
 google_oauth_result.json
+gbooks/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
