@@ -18,14 +18,14 @@ def get_db_uri_cloud():
     DB_URI = os.getenv("CLOUD_DB_URI", "")
     return DB_URI
 
-def get_db_uri_local():
+def get_db_uri_local(local_db, db_connector):
     db_user = os.getenv("DB_USER", "")
     db_pswd = quote(os.getenv("DB_PASSWORD", ""))
     db_host = os.getenv("DB_HOST", "localhost")
     db_port = os.getenv("DB_PORT", "3306")
     db_name = os.getenv("DB_NAME", "")
-    print(f"db: postgres({db_name})@{db_host}:{db_port}")
-    DB_URI = f'postgres://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}'
+    print(f"db: {local_db}({db_name})@{db_host}:{db_port}")
+    DB_URI = f'{local_db}+{db_connector}://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}'
     print(f"DB_URI: {DB_URI}")
     return DB_URI
 
@@ -33,7 +33,7 @@ def get_db_uri():
     env = os.getenv("FLASK_ENV", "dev")
     if env == "prod":
         return get_db_uri_cloud()
-    return get_db_uri_local()
+    return get_db_uri_local(local_db="mysql", db_connector="pymysql")
 
 def get_app():
     app = Flask("bnb")
