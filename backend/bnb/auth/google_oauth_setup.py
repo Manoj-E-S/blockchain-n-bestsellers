@@ -25,9 +25,7 @@ def get_credentials(path_to_client_secret: str, scopes: list[str]):
         path_to_client_secret,
         scopes,
         state=state)
-    print(url_for('auth.dashboard', _external=True))
     flow.redirect_uri = url_for('auth.dashboard', _external=True)
-    print(flow.redirect_uri)
 
     authorization_response = request.url
     flow.fetch_token(authorization_response=authorization_response)

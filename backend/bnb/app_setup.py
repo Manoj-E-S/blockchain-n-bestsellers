@@ -24,8 +24,9 @@ def get_db_uri_local():
     db_host = os.getenv("DB_HOST", "localhost")
     db_port = os.getenv("DB_PORT", "3306")
     db_name = os.getenv("DB_NAME", "")
-    print(f"db: mysql({db_name})@{db_host}:{db_port}")
-    DB_URI = f'mysql+pymysql://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}'
+    print(f"db: postgres({db_name})@{db_host}:{db_port}")
+    DB_URI = f'postgres://{db_user}:{db_pswd}@{db_host}:{db_port}/{db_name}'
+    print(f"DB_URI: {DB_URI}")
     return DB_URI
 
 def get_db_uri():
@@ -40,5 +41,6 @@ def get_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = os.getenv("FLASK_APP_SECRET_KEY")
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+    os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
     return app
 

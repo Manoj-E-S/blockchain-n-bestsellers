@@ -1,6 +1,7 @@
 # Custom
 .secrets/
 .secret/
+google_oauth_result.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
