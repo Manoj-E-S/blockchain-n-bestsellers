@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.libreBaskervilleRegular {
+font-family: "Libre Baskerville", serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.libreBaskervilleBold {
+font-family: "Libre Baskerville", serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.libreBaskervilleRegularItalic {
+font-family: "Libre Baskerville", serif;
+font-weight: 400;
+font-style: italic;
+}
+
+
+.playfairDisplay400 {
+font-family: "Playfair Display", serif;
+font-optical-sizing: auto;
+font-weight: 400;
+font-style: normal;
+}
+
+.playfairDisplay600 {
+font-family: "Playfair Display", serif;
+font-optical-sizing: auto;
+font-weight: 600;
+font-style: normal;
+}
+
+.playfairDisplay700 {
+font-family: "Playfair Display", serif;
+font-optical-sizing: auto;
+font-weight: 700;
+font-style: normal;
+}
+
+.playfairDisplay900 {
+font-family: "Playfair Display", serif;
+font-optical-sizing: auto;
+font-weight: 900;
+font-style: normal;
+}
+
+
+.openSans300 {
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 300;
+font-style: normal;
+font-variation-settings: "wdth" 100;
+}
+
+.openSans500 {
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 500;
+font-style: normal;
+font-variation-settings: "wdth" 100;
+}
+
+.openSans600 {
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 600;
+font-style: normal;
+font-variation-settings: "wdth" 100;
+}
+
+.openSans800 {
+font-family: "Open Sans", sans-serif;
+font-optical-sizing: auto;
+font-weight: 800;
+font-style: normal;
+font-variation-settings: "wdth" 100;
+}
+
+
+.latoThin {
+font-family: "Lato", sans-serif;
+font-weight: 100;
+font-style: normal;
+}
+
+.latoLight {
+font-family: "Lato", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+
+.latoRegular {
+font-family: "Lato", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.latoBold {
+font-family: "Lato", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.latoBlack {
+font-family: "Lato", sans-serif;
+font-weight: 900;
+font-style: normal;
+}
+
+.latoThinItalic {
+font-family: "Lato", sans-serif;
+font-weight: 100;
+font-style: italic;
+}
+
+.latoLightItalic {
+font-family: "Lato", sans-serif;
+font-weight: 300;
+font-style: italic;
+}
+
+.latoRegularItalic {
+font-family: "Lato", sans-serif;
+font-weight: 400;
+font-style: italic;
+}
+
+.latoBoldItalic {
+font-family: "Lato", sans-serif;
+font-weight: 700;
+font-style: italic;
+}
+
+.latoBlackItalic {
+font-family: "Lato", sans-serif;
+font-weight: 900;
+font-style: italic;
+}
+
+
+.poppinsThin {
+font-family: "Poppins", sans-serif;
+font-weight: 100;
+font-style: normal;
+}
+
+.poppinsExtralight {
+font-family: "Poppins", sans-serif;
+font-weight: 200;
+font-style: normal;
+}
+
+.poppinsLight {
+font-family: "Poppins", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+
+.poppinsRegular {
+font-family: "Poppins", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.poppinsMedium {
+font-family: "Poppins", sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+.poppinsSemibold {
+font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-style: normal;
+}
+
+.poppinsBold {
+font-family: "Poppins", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.poppinsExtrabold {
+font-family: "Poppins", sans-serif;
+font-weight: 800;
+font-style: normal;
+}
+
+.poppinsBlack {
+font-family: "Poppins", sans-serif;
+font-weight: 900;
+font-style: normal;
+}
+
+.poppinsThinItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 100;
+font-style: italic;
+}
+
+.poppinsExtralightItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 200;
+font-style: italic;
+}
+
+.poppinsLightItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 300;
+font-style: italic;
+}
+
+.poppinsRegularItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 400;
+font-style: italic;
+}
+
+.poppinsMediumItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 500;
+font-style: italic;
+}
+
+.poppinsSemiboldItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 600;
+font-style: italic;
+}
+
+.poppinsBoldItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 700;
+font-style: italic;
+}
+
+.poppinsExtraboldItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 800;
+font-style: italic;
+}
+
+.poppinsBlackItalic {
+font-family: "Poppins", sans-serif;
+font-weight: 900;
+font-style: italic;
+}
+
+.robotoThin {
+font-family: "Roboto", sans-serif;
+font-weight: 100;
+font-style: normal;
+}
+
+.robotoLight {
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: normal;
+}
+
+.robotoRegular {
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.robotoMedium {
+font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-style: normal;
+}
+
+.robotoBold {
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.robotoBlack {
+font-family: "Roboto", sans-serif;
+font-weight: 900;
+font-style: normal;
+}
+
+.robotoThinItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 100;
+font-style: italic;
+}
+
+.robotoLightItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 300;
+font-style: italic;
+}
+
+.robotoRegularItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 400;
+font-style: italic;
+}
+
+.robotoMediumItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 500;
+font-style: italic;
+}
+
+.robotoBoldItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 700;
+font-style: italic;
+}
+
+.robotoBlackItalic {
+font-family: "Roboto", sans-serif;
+font-weight: 900;
+font-style: italic;
+}
