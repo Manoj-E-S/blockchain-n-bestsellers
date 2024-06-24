@@ -6,6 +6,9 @@ from flask import Flask
 from dotenv import load_dotenv
 load_dotenv("../.env")
 
+def get_jwt_secret():
+    return os.getenv("JWT_SECRET", "")
+
 def get_host():
     HOST = os.getenv("DEV_HOST", "")
     return HOST
