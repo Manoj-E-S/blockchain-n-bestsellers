@@ -6,7 +6,7 @@ from ..db_setup import get_db
 from ..schema import User 
 from ..Utils.hash import hash_password, verify_password
 from ..Utils.jwt import encode, decode
-from ..Utils.oauth import get_name_and_email
+from ..Utils.oauth import get_user_credentials
 
 
 _db = get_db()
@@ -25,7 +25,7 @@ def signup():
         try:
             data = request.get_json()
             new_user = User(name=data['name'], email=data['email'], password=hash_password(data['password']), location=data['location'], contact_no=data['contact_no'], bio=data['bio'])
-            token = encode({"user_id": new_user.uId})
+            token = encode({"id": new_user.uId, "name": new_user.name})
             _db.session.add(new_user)
             _db.session.commit()
             return {"message": f"User {new_user.name} has been created successfully.", "token": token}, 201
@@ -43,7 +43,7 @@ def login():
             data = request.get_json()
             user = User.query.filter_by(email=data['email']).first()
             if user and verify_password(data['password'], user.password):
-                token = encode({"user_id": user.uId})
+                token = encode({"id": user.uId, "name": user.name})
                 return {"message": f"Welcome back {user.name}", "token": token}, 200
             else:
                 return {"error": "Invalid email or password"}, 401
@@ -83,6 +83,7 @@ def dashboard():
             scopes=SCOPES
         )
     # print all the credentials convert to dict TODO: remove this when deployed
-    name, email = get_name_and_email(credentials)    
+    token, refresh_token, name, email = get_user_credentials(credentials)    
     print(name, email)
-    return "callbackoauth"
+    # TODO: maybe return to another redirect via a token
+    return {"message": "You are logged in successfully.", name: name, token: token }, 200

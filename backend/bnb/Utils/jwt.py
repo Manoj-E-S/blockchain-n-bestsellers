@@ -6,7 +6,7 @@ _jwt_secret = get_jwt_secret()
 
 def encode(data):
     # set expiration of token in 2 hours
-    payload = {"uId": data['user_id'], "exp": datetime.utcnow() + timedelta(hours=2)}
+    payload = {"user": data,  "exp": datetime.utcnow() + timedelta(hours=2)}
     encoded_jwt = jwt.encode(payload, _jwt_secret, algorithm='HS256')
     return encoded_jwt
 
