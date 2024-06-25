@@ -11,5 +11,5 @@ def encode(data):
     return encoded_jwt
 
 def decode(token):
-    decoded_jwt = jwt.decode(token, _jwt_secret, 'secret', algorithms=['HS256'])
+    decoded_jwt = jwt.decode(token, _jwt_secret, algorithms=['HS256'])
     return decoded_jwt

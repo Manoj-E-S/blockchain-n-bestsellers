@@ -7,6 +7,7 @@ from ..schema import User
 from ..Utils.hash import hash_password, verify_password
 from ..Utils.jwt import encode, decode
 from ..Utils.oauth import get_user_credentials
+from ..middleware.authMiddleware import auth_middleware
 
 
 _db = get_db()
@@ -66,16 +67,6 @@ def google_login():
     return redirect(authorization_url)
 
 
-@auth_bp.route("/logout")  
-def logout():
-    return "logout"
-
-
-@auth_bp.route("/loggedin")
-def loggedin():
-    return "loggedin"
-
-
 @auth_bp.route('/dashboard')
 def dashboard():
     credentials = get_credentials(
@@ -87,3 +78,10 @@ def dashboard():
     print(name, email)
     # TODO: maybe return to another redirect via a token
     return {"message": "You are logged in successfully.", name: name, token: token }, 200
+
+# TODO: Change route from /auth/profile to /user/profile
+@auth_bp.route("/profile")
+@auth_middleware
+def profile():
+    user = User.query.get(request.user["id"])
+    return {"name": user.name, "email": user.email, "location": user.location, "contact_no": user.contact_no, "bio": user.bio, "books_rated": user.books_rated, "date_joined": user.date_joined, "exchanges_made": user.exchanges_made}, 200
