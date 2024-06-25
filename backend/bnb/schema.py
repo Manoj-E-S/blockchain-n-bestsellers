@@ -2,13 +2,15 @@ from datetime import datetime
 
 from .db_setup import db
 
+# TODO : Budding Author
+
 class User(db.Model):
     __tablename__ = "users"
 
     uId = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(256), nullable=False)
     location = db.Column(db.String(50), nullable=False)
     login_type = db.Column(db.String(50), nullable=False, default="local")
     contact_no = db.Column(db.String(50), nullable=False)
@@ -27,7 +29,6 @@ class User(db.Model):
 
     def __repr__(self) -> str:
         return f"User Name: {self.name}, Email: {self.email}, uId: {self.uId}"
-
 
 class Book(db.Model):
     __tablename__ = "books"
@@ -90,10 +91,11 @@ class Message(db.Model):
     __tablename__ = "messages"
 
     mId = db.Column(db.Integer, primary_key=True)
+    mOwner = db.Column(db.Integer, db.ForeignKey('users.uId'), nullable=False)
     requestFor = db.Column(db.Integer, db.ForeignKey('books.bId'), nullable=False)
     inReturnFor = db.Column(db.Integer, db.ForeignKey('books.bId'), nullable=False)
-    requesterId = db.Column(db.Integer, db.ForeignKey('users.uId'), nullable=False)
-    requesteeId = db.Column(db.Integer, db.ForeignKey('users.uId'), nullable=False)
+    requesterId = db.Column(db.Integer, nullable=False)
+    requesteeId = db.Column(db.Integer, nullable=False)
     currentState = db.Column(db.String(50), nullable=False)
     message = db.Column(db.String(250), nullable=False)
     eId = db.Column(db.Integer, db.ForeignKey('exchanges.eId'), nullable=False)

@@ -72,13 +72,14 @@ pipenv install --dev
 ### Initialize the app and the DB
 1. Navigate to the root directory of the backend: `cd ./backend`
 2. Add a .env file as per the .env.example file in this directory.
-3. Run the app using 
+3. Create a .secrets folder and add your `client_secret.json` file.
+4. Run the app using 
 ```
-flask run                       # if FLASK_ENV="bnb" is listed in .env file
-flask --app bnb run [--debug]   # Otherwise
+flask run -p 3000                      # if FLASK_ENV="bnb" is listed in .env file
+flask --app bnb run [--debug] -p 3000  # Otherwise
 ```
-4. Run `flask db init` for initialization of the `migrations/` directory **(only once)**
-5. Use the following two commands to make migrations and upgrade the database to those changes **(every time the schema changes)**:
+5. Run `flask db init` for initialization of the `migrations/` directory **(only once)**
+6. Use the following two commands to make migrations and upgrade the database to those changes **(every time the schema changes)**:
 ```
 flask db migrate    # for creating a migration in ./migrations/versions
 flask db upgrade    # to actually upgrade the database
