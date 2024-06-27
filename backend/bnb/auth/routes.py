@@ -26,9 +26,9 @@ def signup():
         try:
             data = request.get_json()
             new_user = User(name=data['name'], email=data['email'], password=hash_password(data['password']), location=data['location'], contact_no=data['contact_no'], bio=data['bio'])
-            token = encode({"id": new_user.uId, "name": new_user.name})
             _db.session.add(new_user)
             _db.session.commit()
+            token = encode({"id": new_user.uId, "name": new_user.name})
             return {"message": f"User {new_user.name} has been created successfully.", "token": token}, 201
         except Exception as e:
             print(e)

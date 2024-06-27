@@ -22,7 +22,7 @@ def create_app():
     from .auth.routes import auth_bp
     app.register_blueprint(auth_bp)
     
-    # from .recommend.routes import recommend_bp
-    # app.register_blueprint(recommend_bp)
+    from .books.routes import book_bp
+    app.register_blueprint(book_bp)
     
     return app
