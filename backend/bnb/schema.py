@@ -11,10 +11,10 @@ class User(db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable=False)
-    location = db.Column(db.String(50), nullable=False)
+    location = db.Column(db.String(50), nullable=False, default="default location")
     login_type = db.Column(db.String(50), nullable=False, default="local")
-    contact_no = db.Column(db.String(50), nullable=False)
-    bio = db.Column(db.String(250), nullable=False)
+    contact_no = db.Column(db.String(50), nullable=False, default="default contact_no")
+    bio = db.Column(db.String(250), nullable=False, default="default bio")
 
     # Profile stats (including it here for faster queries)
     books_rated = db.Column(db.Integer, nullable=False, default=0)

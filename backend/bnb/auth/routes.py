@@ -25,11 +25,28 @@ def signup():
     if request.is_json:
         try:
             data = request.get_json()
-            new_user = User(name=data['name'], email=data['email'], password=hash_password(data['password']), location=data['location'], contact_no=data['contact_no'], bio=data['bio'])
+            new_user = User(name=data['name'], email=data['email'], password=hash_password(data['password']))
             _db.session.add(new_user)
             _db.session.commit()
             token = encode({"id": new_user.uId, "name": new_user.name})
-            return {"message": f"User {new_user.name} has been created successfully.", "token": token}, 201
+            return {"message": f"User {new_user.name} has been created successfully.", "token": token, "redirectUrl": '/completeSignup'}, 201
+        except Exception as e:
+            print(e)
+            return {"error": str(e)}, 500
+    else:
+        return {"error": "The request payload is not in JSON format"}, 400
+    
+@auth_bp.route("/completeSignup", methods=["POST"])
+def completeSignup():
+    if request.is_json:
+        try:
+            data = request.get_json()
+            user = User.query.get(request.user["id"])
+            user.location = data["location"]
+            user.contact_no = data["contact_no"]
+            user.bio = data["bio"]
+            _db.session.commit()
+            return {"message": "User profile has been updated successfully.", "redirectUrl": "/getGenres"}, 200
         except Exception as e:
             print(e)
             return {"error": str(e)}, 500
@@ -77,7 +94,7 @@ def dashboard():
     token, refresh_token, name, email = get_user_credentials(credentials)    
     print(name, email)
     # TODO: maybe return to another redirect via a token
-    return {"message": "You are logged in successfully.", name: name, token: token }, 200
+    return redirect(f'http://localhost:5000/signin?step=3&name={name}&token={token}'), 200
 
 # TODO: Change route from /auth/profile to /user/profile
 @auth_bp.route("/profile")
