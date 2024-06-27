@@ -6,8 +6,8 @@ from ..recommender.utils import (
     DfUtils,
 )
 
-BOOK_DATASET_PATH = "../../../recommender/main_dataset/updated_books.csv"
-BOOKS_DF = DfUtils.get_books_df(BOOK_DATASET_PATH)
+BOOK_DATASET_PATH = "../recommender/main_dataset/updated_books.csv"
+BOOKS_DF = DfUtils.get_df(BOOK_DATASET_PATH)
 
 ############ DEV ONLY
 from ..schema import Book
