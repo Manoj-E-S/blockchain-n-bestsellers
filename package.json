@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@studio-freight/react-lenis": "^0.0.47",
+    "swiper": "^11.1.4"
+  }
+}

@@ -1,26 +1,101 @@
-:root {
-  --primary: #d4bfa5;
-  --secondary: #a16e4b;
-  --accent: #bc733f;
-  --contrast: #572f16;
-  --high-contrast: #2a190c;
-  --dark-text: #2a190c;
-  --light-text: #d4bfa5;
-  
-  line-height: 1.5;
+@import url("https://fonts.googleapis.com/css2?&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-  color-scheme: light dark;
-  color: var(--dark-text);
-  background-color: var(--primary);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Gallient';
+  src: url('/assets/gallient/Gallient.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 30px; /* Rounded corners for the thumb */
+  border: 3px solid #f1f1f1; /* Adds padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the thumb when hovered */
+}
+
+/* For Firefox */
 * {
-  padding: 0;
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
+}
+
+/* For Internet Explorer and Edge */
+*::-ms-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+*::-ms-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 30px; 
+}
+
+*::-ms-scrollbar-thumb:hover {
+  background: #555; /* Color of the thumb when hovered */
+}
+
+
+* {
   margin: 0;
-  box-sizing: border-box;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
 }
