@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint, request
 from ..middleware.authMiddleware import auth_middleware #TODO: Add middleware to all routes
 
@@ -5,9 +7,6 @@ from ..recommender.utils import (
     PopularBooksRecommender,
     DfUtils,
 )
-
-BOOK_DATASET_PATH = "../recommender/main_dataset/updated_books.csv"
-BOOKS_DF = DfUtils.get_df(BOOK_DATASET_PATH)
 
 ############ DEV ONLY
 from ..schema import Book
@@ -19,6 +18,12 @@ from ..db_setup import get_db
 _db = get_db()
 
 book_bp = Blueprint("books", __name__, url_prefix="/books")
+
+
+BOOK_DATASET_PATH = os.path.join(os.path.dirname(__file__), "../data_store/updated_books.csv")
+RATING_DATASET_PATH = os.path.join(os.path.dirname(__file__), "../data_store/updated_ratings.csv")
+BOOKS_DF = DfUtils.get_df(BOOK_DATASET_PATH)
+
 
 @book_bp.route("/getGenres")
 def getGenres():
@@ -58,13 +63,13 @@ def addBooksToDb():
 
 @book_bp.route("/nPopularBooks/<n>", methods=["GET"])
 def getNPopularBooks(n=10):
-    pop_isbns = PopularBooksRecommender.recommend(BOOK_DATASET_PATH, n)
+    pop_isbns = PopularBooksRecommender.recommend(RATING_DATASET_PATH, n)
     pop_books_df = BOOKS_DF[BOOKS_DF["isbn"].isin(pop_isbns)]
     pop_books = [
         {
             "isbn": isbn,
             "title": title,
-            "genres": genres,
+            "genres": list(eval(genres)),
             "avg_rating": avg_rating,
             "author": author,
             "imgUrlSmall": imgUrlSmall,
@@ -77,7 +82,7 @@ def getNPopularBooks(n=10):
             pop_books_df["title"],
             pop_books_df["author"],
             pop_books_df["avg_rating"],
-            list(eval(pop_books_df["genre"])),
+            pop_books_df["genre"],
             pop_books_df["s_img_url"],
             pop_books_df["l_img_url"],
             pop_books_df["pub_year"],
@@ -96,7 +101,7 @@ def getNPopularGenreBooks(genre, n=10):
         {
             "isbn": isbn,
             "title": title,
-            "genres": genres,
+            "genres": list(eval(genres)),
             "avg_rating": avg_rating,
             "author": author,
             "imgUrlSmall": imgUrlSmall,
@@ -109,7 +114,7 @@ def getNPopularGenreBooks(genre, n=10):
             pop_books_df["title"],
             pop_books_df["author"],
             pop_books_df["avg_rating"],
-            list(eval(pop_books_df["genre"])),
+            pop_books_df["genre"],
             pop_books_df["s_img_url"],
             pop_books_df["l_img_url"],
             pop_books_df["pub_year"],
@@ -122,13 +127,13 @@ def getNPopularGenreBooks(genre, n=10):
 
 @book_bp.route("/nRandomBooks/<n>", methods=["GET"])
 def getNRandomBooks(n=10):
-    random_isbns = PopularBooksRecommender.random_n(BOOK_DATASET_PATH, n)
+    random_isbns = PopularBooksRecommender.random_n(RATING_DATASET_PATH, n)
     random_books_df = BOOKS_DF[BOOKS_DF["isbn"].isin(random_isbns)]
     random_books = [
         {
             "isbn": isbn,
             "title": title,
-            "genres": genres,
+            "genres": list(eval(genres)),
             "avg_rating": avg_rating,
             "author": author,
             "imgUrlSmall": imgUrlSmall,
@@ -141,7 +146,7 @@ def getNRandomBooks(n=10):
             random_books_df["title"],
             random_books_df["author"],
             random_books_df["avg_rating"],
-            list(eval(random_books_df["genre"])),
+            random_books_df["genre"],
             random_books_df["s_img_url"],
             random_books_df["l_img_url"],
             random_books_df["pub_year"],
