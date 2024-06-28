@@ -1,0 +1,23 @@
+/* Testimonials.css */
+
+/* Customize Swiper navigation arrows */
+.swiper-button-next, .swiper-button-prev {
+    color: white; /* Change arrow color to white */
+  }
+  
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 2rem; /* Adjust the size of the arrows if needed */
+  }
+  
+  .swiper-button-next:hover, .swiper-button-prev:hover {
+    color: #ccc; /* Change color on hover, if desired */
+  }
+  
+  /* Customize Swiper pagination dots */
+  .swiper-pagination-bullet {
+    background-color: white; /* Change dot color to white */
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #ccc; /* Change active dot color */
+  }

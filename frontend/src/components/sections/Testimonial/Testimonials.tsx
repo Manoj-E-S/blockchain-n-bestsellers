@@ -1,10 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
-import testimonials, { Testimonial } from "../../constants/testimonials";
+import testimonials, { Testimonial } from "../../../constants/testimonials";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "./Testimonial.css";
 
 const Testimonials: React.FC = () => {
   return (
@@ -20,7 +21,7 @@ const Testimonials: React.FC = () => {
           >
             {testimonials.map((testimonial: Testimonial, index: number) => (
               <SwiperSlide key={index}>
-                <div className="bg-[#1a1a25] text-white text-xl h-[20vw] p-6 rounded-lg font-raleway flex flex-col items-center justify-center">
+                <div className="bg-darkBrown text-white text-xl h-[20vw] p-6 rounded-lg font-raleway flex flex-col items-center justify-center">
                   <p className="mb-4">"{testimonial.feedback}"</p>
                   <p className="font-semibold text-right">- {testimonial.name}</p>
                 </div>

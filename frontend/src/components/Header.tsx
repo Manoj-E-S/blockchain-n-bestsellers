@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Header: React.FC = () => {
   return (
     <div className='w-full h-[16vh] bg-cream py-5 pl-10 pr-20 flex items-center justify-between font-raleway font-semibold'>
-      <img src="/assets/logo_H2.png" alt="" />
+      <img src="/assets/logo_H2_nobg.png" alt="" />
       <div className='flex gap-4'>
         <NavLink 
           to="/" 
