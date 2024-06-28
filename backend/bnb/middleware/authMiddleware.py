@@ -14,4 +14,5 @@ def auth_middleware(func):
                 return {"error": str(e)}, 401
         else:
             return {"error": "No token provided"}, 401
+    wrapper.__name__ = func.__name__
     return wrapper

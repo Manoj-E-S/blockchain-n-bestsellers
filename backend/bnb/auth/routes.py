@@ -37,6 +37,7 @@ def signup():
         return {"error": "The request payload is not in JSON format"}, 400
     
 @auth_bp.route("/completeSignup", methods=["POST"])
+@auth_middleware
 def completeSignup():
     if request.is_json:
         try:
@@ -94,7 +95,7 @@ def dashboard():
     token, refresh_token, name, email = get_user_credentials(credentials)    
     print(name, email)
     # TODO: maybe return to another redirect via a token
-    return redirect(f'http://localhost:5000/signin?step=3&name={name}&token={token}'), 200
+    return redirect(f'http://localhost:5173/signup?step=3&name={name}&token={token}'), 200
 
 # TODO: Change route from /auth/profile to /user/profile
 @auth_bp.route("/profile")

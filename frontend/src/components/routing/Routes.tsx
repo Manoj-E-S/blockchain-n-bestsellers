@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Signup from "../Signup.tsx";
 import Login from "../Login.tsx";
@@ -6,8 +6,12 @@ import Home from "../pages/Home.tsx";
 import Layout from "../pages/Layout.tsx";
 import About from "../pages/About.tsx";
 import Contact from "../pages/Contact.tsx";
+import Books from "../pages/Books.tsx";
 
 const AppRoutes: React.FC = () => {
+  const [FavGenres, setFavGenres] = useState([
+    'biography', 'crime', 'mystery', 'romance', 'young'
+  ])
 
   return (
       <Routes>
@@ -16,8 +20,9 @@ const AppRoutes: React.FC = () => {
         <Route path="/about" element={<Layout><About /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         {/* Pages that dont use Basic Layout */}
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup setFavGenres={setFavGenres} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/books" element={<Layout><Books FavGenres={FavGenres} /></Layout>} />
         {/*
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/search" element={<Search />} />

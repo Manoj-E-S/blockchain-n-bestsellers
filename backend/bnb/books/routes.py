@@ -102,7 +102,8 @@ def getNPopularGenreBooks(genre, n=10):
             "isbn": isbn,
             "title": title,
             "genres": list(eval(genres)),
-            "avg_rating": avg_rating,
+            # if avg_rating is NaN, set it to 0
+            "avg_rating": avg_rating if avg_rating == avg_rating else 0,
             "author": author,
             "imgUrlSmall": imgUrlSmall,
             "imgUrlLarge": imgUrlLarge,
@@ -121,7 +122,7 @@ def getNPopularGenreBooks(genre, n=10):
             pop_books_df["publisher"]
         )
     ]
-
+ 
     return pop_books, 200
 
 
