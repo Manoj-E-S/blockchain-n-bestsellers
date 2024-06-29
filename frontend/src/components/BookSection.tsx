@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import getBooks from "../functions/getBooks"
+import { useNavigate } from "react-router-dom"
 
 const BookSection = ({placeholder, url}: {placeholder: string, url: string}) => {
+    const navigate = useNavigate();
     const [Books, setBooks] = useState([])
     useEffect(() => {
       async function populateBooks(fetchUrl: string) {
@@ -24,7 +26,7 @@ const BookSection = ({placeholder, url}: {placeholder: string, url: string}) => 
                 {Books?.map((book, index) => {
                     if(index > 4) return null;
                     return (
-                        <div key={book.isbn} className="flex flex-col gap-1">
+                        <div onClick={() => navigate(`/book/${book.isbn}`)} key={book.isbn} className="flex flex-col gap-1">
                             <img src={book.imgUrlLarge} alt={book.title} className="h-64  object-contain" />
                             <h3 className="font-gallient text-xl font-bold text-center">{book.title}</h3>
                         </div>

@@ -22,7 +22,7 @@ const AppRoutes: React.FC = () => {
       <Route path="/about" element={<Layout><About /></Layout>} />
       <Route path="/contact" element={<Layout><Contact /></Layout>} />
       <Route path="/books" element={<Layout><Books FavGenres={FavGenres} /></Layout>} />
-      <Route path="/books/:id" element={<Layout><DetailedView /></Layout>} />
+      <Route path="/book/:id" element={<Layout><DetailedView /></Layout>} />
       {/* Pages that don't use Basic Layout */}
       <Route path="/signup" element={<Signup setFavGenres={setFavGenres} />} />
       <Route path="/login" element={<Login />} />
