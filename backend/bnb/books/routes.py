@@ -30,6 +30,27 @@ def getGenres():
     genres = {'biography': 16816, 'history': 16813, 'crime': 13876, 'adventure': 6, 'thriller': 13876, 'mystery': 13877, 'humor': 5, 'fiction': 622, 'paranormal': 8934, 'fantasy': 8936, 'romance': 12362, 'young': 1593, 'adult': 1593, 'children': 3946, 'poetry': 281, 'graphic': 596, 'comic': 596, 'horror': 1, 'nonfiction': 9, 'science': 7, 'detective': 4, 'psychology': 2, 'historical': 2}
     return genres, 200
 
+@book_bp.route("/<isbn>", methods=["GET"])
+def getBook(isbn):
+    book = BOOKS_DF[BOOKS_DF["isbn"].isin([isbn])]
+    if book.empty:
+        return {"message": "Book not found"}, 404
+
+    book = book.iloc[0]
+    book = {
+        "isbn": book["isbn"],
+        "title": book["title"],
+        "genres": list(eval(book["genre"])),
+        "avg_rating": book["avg_rating"],
+        "author": book["author"],
+        "imgUrlSmall": book["s_img_url"],
+        "imgUrlLarge": book["l_img_url"],
+        "year_of_publication": int(book["pub_year"]),
+        "publisher": book["publisher"]
+    }
+    return book, 200
+
+
 
 # TODO: need to change title length to 250
 @book_bp.route("/addBooksToDb")
