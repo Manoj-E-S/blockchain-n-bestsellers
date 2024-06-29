@@ -5,11 +5,14 @@ from .db_setup import (
 from .schema import (
     User, Book, Rating, Exchange, TrainableBook, Message, ServerStats
 )
+from flask_cors import CORS
 
 
 def create_app():
     
     app = get_app()
+    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "http://localhost:5173/"}})
 
     db = get_db()
     db.init_app(app)
