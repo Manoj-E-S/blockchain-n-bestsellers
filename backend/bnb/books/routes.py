@@ -46,11 +46,10 @@ def getBook(isbn):
         "imgUrlSmall": book["s_img_url"],
         "imgUrlLarge": book["l_img_url"],
         "year_of_publication": int(book["pub_year"]),
-        "publisher": book["publisher"]
+        "publisher": book["publisher"],
+        "description" : f"'{book['title']}' is a compelling book that delves into the heart of human experience, offering readers a treasure trove of wisdom distilled from various life stages and challenges. Each chapter unfolds a different lesson, ranging from the importance of resilience and adaptability to the value of empathy and kindness. The author weaves personal anecdotes with universal truths, creating a tapestry of insights that resonate deeply with anyone seeking guidance or inspiration. This book doesn't just tell you how to live — it shows you through vivid stories and relatable experiences, making it a timeless companion on the journey of life."
     }
     return book, 200
-
-
 
 # TODO: need to change title length to 250
 @book_bp.route("/addBooksToDb")
