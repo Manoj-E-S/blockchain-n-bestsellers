@@ -48,7 +48,7 @@ const DetailedView: React.FC = () => {
   return (
     <div className="bg-[#c2b19c] w-full h-[100vh] flex items-center justify-center text-darkBrown">
       <div className="left h-full w-1/2 flex items-center justify-center">
-        <img className="h-full p-5" src="/assets/black-beauty-cover.jpg" alt="Book Cover" />
+        <img className="h-full p-5" src={Book?.imgUrlLarge} alt="Book Cover" />
       </div>
       <div className="right h-full w-1/2 flex flex-col gap-5 p-20 font-raleway">
         <h1 className="text-4xl font-gallient font-bold tracking-wide">{Book?.title}</h1>
