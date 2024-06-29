@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { NavLink } from "react-router-dom";
+import login from "../functions/login";
 
 // Validation schema
 const schema = yup.object().shape({
@@ -25,9 +26,18 @@ const Login: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    // Handle login logic here
+  const onSubmit = async(data: any) => {
+    const result = await login(data.email, data.password);
+    if(result.ok) {
+      // Redirect to dashboard
+      console.log("Login successful");
+      console.log(result.data);
+    }
+    else {
+      // Display error message
+      console.log("Login failed");
+      console.log(result.data);
+    }
   };
 
   return (
@@ -110,7 +120,7 @@ const Login: React.FC = () => {
                     src="https://i.imgur.com/arC60SB.png"
                     alt="Google"
                   />
-                  <button type="button">Login with Google</button>
+                  <button type="button" onClick={() => document.location.href="http://localhost:3000/auth/googlelogin"}>Login with Google</button>
                 </div>
               </div>
             </form>

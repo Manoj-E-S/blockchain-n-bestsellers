@@ -2,7 +2,7 @@ import React from 'react'
 import Hero from '../sections/Hero'
 import BookDetails from '../sections/BookDetails'
 import Newsletter from '../sections/Newsletter'
-import Testimonials from '../sections/Testimonials'
+import Testimonials from '../sections/Testimonial/Testimonials'
 
 const Home : React.FC = () => {
   return (

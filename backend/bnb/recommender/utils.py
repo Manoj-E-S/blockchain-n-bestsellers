@@ -29,7 +29,7 @@ class PopularBooksRecommender:
     def recommend_from_genre(df_path, genre, n=10):
         books_df = DfUtils.get_df(df_path)
         books_df = books_df[books_df['genre'].apply(lambda x: genre in eval(x))]
-        rndm_n = books_df.sort_values("avg_rating", ascending=False).sample(int(n))["isbn"].values
+        rndm_n = books_df.sample(int(n))["isbn"].values
         
         return rndm_n
     

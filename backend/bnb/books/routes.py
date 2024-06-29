@@ -30,6 +30,26 @@ def getGenres():
     genres = {'biography': 16816, 'history': 16813, 'crime': 13876, 'adventure': 6, 'thriller': 13876, 'mystery': 13877, 'humor': 5, 'fiction': 622, 'paranormal': 8934, 'fantasy': 8936, 'romance': 12362, 'young': 1593, 'adult': 1593, 'children': 3946, 'poetry': 281, 'graphic': 596, 'comic': 596, 'horror': 1, 'nonfiction': 9, 'science': 7, 'detective': 4, 'psychology': 2, 'historical': 2}
     return genres, 200
 
+@book_bp.route("/<isbn>", methods=["GET"])
+def getBook(isbn):
+    book = BOOKS_DF[BOOKS_DF["isbn"].isin([isbn])]
+    if book.empty:
+        return {"message": "Book not found"}, 404
+
+    book = book.iloc[0]
+    book = {
+        "isbn": book["isbn"],
+        "title": book["title"],
+        "genres": list(eval(book["genre"])),
+        "avg_rating": book["avg_rating"],
+        "author": book["author"],
+        "imgUrlSmall": book["s_img_url"],
+        "imgUrlLarge": book["l_img_url"],
+        "year_of_publication": int(book["pub_year"]),
+        "publisher": book["publisher"],
+        "description" : f"'{book['title']}' is a compelling book that delves into the heart of human experience, offering readers a treasure trove of wisdom distilled from various life stages and challenges. Each chapter unfolds a different lesson, ranging from the importance of resilience and adaptability to the value of empathy and kindness. The author weaves personal anecdotes with universal truths, creating a tapestry of insights that resonate deeply with anyone seeking guidance or inspiration. This book doesn't just tell you how to live — it shows you through vivid stories and relatable experiences, making it a timeless companion on the journey of life."
+    }
+    return book, 200
 
 @book_bp.route("/nPopularBooks/<n>", methods=["GET"])
 def getNPopularBooks(n=10):
@@ -72,7 +92,8 @@ def getNPopularGenreBooks(genre, n=10):
             "isbn": isbn,
             "title": title,
             "genres": list(eval(genres)),
-            "avg_rating": avg_rating,
+            # if avg_rating is NaN, set it to 0
+            "avg_rating": avg_rating if avg_rating == avg_rating else 0,
             "author": author,
             "imgUrlSmall": imgUrlSmall,
             "imgUrlLarge": imgUrlLarge,
@@ -91,7 +112,7 @@ def getNPopularGenreBooks(genre, n=10):
             pop_books_df["publisher"]
         )
     ]
-
+ 
     return pop_books, 200
 
 

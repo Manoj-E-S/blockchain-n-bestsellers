@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { motion } from "framer-motion";
+import signup from "../functions/signup";
+import completeSignup from "../functions/completeSignup";
+import { useNavigate } from "react-router-dom";
 
 interface StepOneInputs {
   name: string;
@@ -38,7 +41,16 @@ const genres = [
   'Comic', 'Horror', 'Nonfiction', 'Science', 'Detective', 'Psychology',
 ];
 
-const Signup: React.FC = () => {
+const Signup: React.FC = ({setFavGenres}) => {
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const step = url.searchParams.get("step");
+    if (step === "3") {
+      setStep(3);
+    }
+  }, [])
+  
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [stepOneData, setStepOneData] = useState<StepOneInputs | null>(null);
@@ -60,14 +72,30 @@ const Signup: React.FC = () => {
     resolver: yupResolver(stepTwoSchema),
   });
 
-  const handleStepOneSubmit: SubmitHandler<StepOneInputs> = (data) => {
-    console.log(data);
+  const handleStepOneSubmit: SubmitHandler<StepOneInputs> = async(data) => {
+    const result = await signup(data.name, data.email, data.password);
+    if(result.ok) {
+      console.log("Signup successful");
+      console.log(result.data);
+    }
+    else {
+      console.log("Signup failed");
+      console.log(result.data);
+    }
     setStepOneData(data);
     setStep(2);
   };
 
-  const handleStepTwoSubmit: SubmitHandler<StepTwoInputs> = (data) => {
-    console.log(data);
+  const handleStepTwoSubmit: SubmitHandler<StepTwoInputs> = async (data) => {
+    const result = await completeSignup(data.location, data.contact);
+    if(result.ok) {
+      console.log("Signup successful");
+      console.log(result.data);
+    }
+    else {
+      console.log("Signup failed");
+      console.log(result.data);
+    }
     setStepTwoData(data);
     setStep(3);
   };
@@ -76,6 +104,8 @@ const Signup: React.FC = () => {
     console.log("Step 1 Data: ", stepOneData);
     console.log("Step 2 Data: ", stepTwoData);
     console.log("Selected Genres: ", selectedGenres);
+    setFavGenres(selectedGenres.map((genre) => genre.toLowerCase()));
+    navigate("/books")
   };
 
   const handleGenreSelect = (genre: string) => {    
