@@ -31,36 +31,6 @@ def getGenres():
     return genres, 200
 
 
-# TODO: need to change title length to 250
-@book_bp.route("/addBooksToDb")
-def addBooksToDb():
-    with open('C:/Users/antri/OneDrive/Desktop/Coding/bnb/backend/bnb/books/updated_books.csv', 'r') as file:
-        booksCsv = csv.reader(file)
-        for i, row in enumerate(booksCsv):
-            try:
-                if i == 100:
-                    break
-                if i == 0:
-                    continue
-                else:
-                    book = Book(
-                        ISBN=row[0],
-                        title=row[1],
-                        genre=row[8],
-                        avg_rating=float(row[11]),
-                        author=row[2],
-                        imgUrlSmall=row[5],
-                        imgUrlLarge=row[6],
-                        year_of_publication=row[3],
-                        publisher=row[4]
-                    )
-                    _db.session.add(book)
-            except Exception as e:
-                print(e)
-        _db.session.commit()
-    return "100 Books added to DB", 200
-
-
 @book_bp.route("/nPopularBooks/<n>", methods=["GET"])
 def getNPopularBooks(n=10):
     pop_isbns = PopularBooksRecommender.recommend(RATING_DATASET_PATH, n)
